@@ -1,0 +1,2 @@
+Cross Domain requests are getting blocked by CORS, currently for testing we can disable it using a Chrome extension 
+however later we must disable CORS using something like <?php header('Access-Control-Allow-Origin: *'); ?>
