@@ -8,6 +8,7 @@ let clientId = "FEUP-SINF-S"
 let clientSecret = "155c857c-00d5-4a43-a92e-3a0e155f3030";
 let application = "application";
 
+//Get token to use API
 function getToken() {
 	var settings = {
 		"async": true,
@@ -19,7 +20,7 @@ function getToken() {
 			"Accept": "*/*",
 		},
 		"data": {
-			"grant_type": "client_credentials",
+			"grant_type": grantType,
 			"client_id": clientId,
 			"client_secret": clientSecret,
 			"scope": application
@@ -33,11 +34,12 @@ function getToken() {
 	});
 }
 
-function getWarehouses() {
+//Generic API request to path with callback
+function request(path, callback) {
 	var settings = {
 		"async": true,
 		"crossDomain": true,
-		"url": url + "/api/" + tenant + "/" + organization + "/materialscore/warehouses",
+		"url": url + "/api/" + tenant + "/" + organization + path,
 		"method": "GET",
 		"headers": {
 			"Content-Type": "application/x-www-form-urlencoded",
@@ -53,6 +55,13 @@ function getWarehouses() {
 	}
 
 	$.ajax(settings).done(function (response) {
+		callback(response);
+	});
+}
+
+//Get Warehouses
+function getWarehouses() {
+	request("/materialscore/warehouses", function(response){
 		console.log("Get Warehouses Response:");
 		console.log(response);
 	});
