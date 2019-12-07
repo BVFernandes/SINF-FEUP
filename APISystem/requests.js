@@ -66,3 +66,51 @@ function getWarehouses() {
 		console.log(response);
 	});
 }
+
+//Get Material Items
+function getMaterialItems() {
+	request("/materialscore/materialsitems", function(response){
+		console.log("Get Material Items Response:");
+		console.log(response);
+	});
+}
+
+//Get Invoices
+function getInvoices() {
+	request("/billing/invoices/", function(response){
+		console.log("Get Invoices Response:");
+		console.log(response);
+	});
+}
+
+//Get Orders
+function getOrders() {
+	request("/sales/orders", function(response){
+		console.log("Get Orders Response:");
+		console.log(response);
+	});
+}
+
+//Get Purchase Orders
+function getPurchaseOrders() {
+	request("/purchases/orders?", function(response){
+		console.log("Get Purchase Orders Response:");
+		console.log(response);
+	});
+}
+
+//Get Financial Account
+function getFinancialAccounts() {
+	request("/financialcore/financialAccounts", function(response){
+		console.log("Get Financial Account Response:");
+		console.log(response);
+	});
+}
+
+//Get Accounting Summary 
+function getAccountingSummary() {
+	request("/financialCore/accountingEntries/getAccountingSummaries/odata?$inlinecount=allpages&$top=20&$skip10", function(response){
+		console.log("Get Accounting SummaryResponse:");
+		console.log(response);
+	});
+}
