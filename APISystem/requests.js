@@ -8,8 +8,10 @@ let clientId = "FEUP-SINF-S"
 let clientSecret = "155c857c-00d5-4a43-a92e-3a0e155f3030";
 let application = "application";
 
-//Get token to use API
-function getToken() {
+//Generic API request to path with callback
+function request(path, callback) {
+
+	//Setup token request
 	var settings = {
 		"async": true,
 		"crossDomain": true,
@@ -27,41 +29,43 @@ function getToken() {
 		}
 	}
 
+	//Request Token
 	$.ajax(settings).done(function (response) {
+		//Store token
 		token = response.token_type + " " + response.access_token;
-		console.log("Get Token Response:");
-		console.log(response);
-	});
-}
 
-//Generic API request to path with callback
-function request(path, callback) {
-	var settings = {
-		"async": true,
-		"crossDomain": true,
-		"url": url + "/api/" + tenant + "/" + organization + path,
-		"method": "GET",
-		"headers": {
-			"Content-Type": "application/x-www-form-urlencoded",
-			"Accept": "*/*",
-			"Authorization": token
-		},
-		"data": {
-			"grant_type": "client_credentials",
-			"client_id": clientId,
-			"client_secret": clientSecret,
-			"scope": application
+		//Print current token
+		console.log("Current token: " + token);
+
+		//Prepare desired request
+		var settings = {
+			"async": true,
+			"crossDomain": true,
+			"url": url + "/api/" + tenant + "/" + organization + path,
+			"method": "GET",
+			"headers": {
+				"Content-Type": "application/x-www-form-urlencoded",
+				"Accept": "*/*",
+				"Authorization": token
+			},
+			"data": {
+				"grant_type": "client_credentials",
+				"client_id": clientId,
+				"client_secret": clientSecret,
+				"scope": application
+			}
 		}
-	}
 
-	$.ajax(settings).done(function (response) {
-		callback(response);
+		//Perform desired request and callback
+		$.ajax(settings).done(function (response) {
+			callback(response);
+		});
 	});
 }
 
 //Get Warehouses
 function getWarehouses() {
-	request("/materialscore/warehouses", function(response){
+	request("/materialscore/warehouses", function (response) {
 		console.log("Get Warehouses Response:");
 		console.log(response);
 	});
@@ -69,7 +73,7 @@ function getWarehouses() {
 
 //Get Material Items
 function getMaterialItems() {
-	request("/materialscore/materialsitems", function(response){
+	request("/materialscore/materialsitems", function (response) {
 		console.log("Get Material Items Response:");
 		console.log(response);
 	});
@@ -77,7 +81,7 @@ function getMaterialItems() {
 
 //Get Invoices
 function getInvoices() {
-	request("/billing/invoices/", function(response){
+	request("/billing/invoices/", function (response) {
 		console.log("Get Invoices Response:");
 		console.log(response);
 	});
@@ -85,7 +89,7 @@ function getInvoices() {
 
 //Get Orders
 function getOrders() {
-	request("/sales/orders", function(response){
+	request("/sales/orders", function (response) {
 		console.log("Get Orders Response:");
 		console.log(response);
 	});
@@ -93,7 +97,7 @@ function getOrders() {
 
 //Get Purchase Orders
 function getPurchaseOrders() {
-	request("/purchases/orders?", function(response){
+	request("/purchases/orders?", function (response) {
 		console.log("Get Purchase Orders Response:");
 		console.log(response);
 	});
@@ -101,7 +105,7 @@ function getPurchaseOrders() {
 
 //Get Financial Account
 function getFinancialAccounts() {
-	request("/financialcore/financialAccounts", function(response){
+	request("/financialcore/financialAccounts", function (response) {
 		console.log("Get Financial Account Response:");
 		console.log(response);
 	});
@@ -109,7 +113,7 @@ function getFinancialAccounts() {
 
 //Get Accounting Summary 
 function getAccountingSummary() {
-	request("/financialCore/accountingEntries/getAccountingSummaries/odata?$inlinecount=allpages&$top=20&$skip10", function(response){
+	request("/financialCore/accountingEntries/getAccountingSummaries/odata?$inlinecount=allpages&$top=20&$skip10", function (response) {
 		console.log("Get Accounting SummaryResponse:");
 		console.log(response);
 	});
