@@ -118,3 +118,11 @@ function getAccountingSummary() {
 		console.log(response);
 	});
 }
+
+//Get Costumers
+function getCostumers() {
+	request("/salescore/customerParties?page=1&pageSize=10", function (response) {
+		console.log("Get Costumers");
+		console.log(response);
+	});
+}
