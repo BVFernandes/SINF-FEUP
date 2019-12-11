@@ -60,68 +60,73 @@ function request(path, callback) {
 }
 
 //Get Warehouses
-function getWarehouses() {
+function getWarehouses(callback) {
 	request("/materialscore/warehouses", function (response) {
 		console.log("Get Warehouses Response:");
 		console.log(response);
+		callback(response);
 	});
 }
 
 //Get Material Items
 function getMaterialItems(callback) {
 	request("/materialscore/materialsitems", function (response) {
+		console.log("Get Material Items Response:");
+		console.log(response);
 		callback(response);
 	});
 }
 
 //Get Invoices
-function getInvoices() {
+function getInvoices(callback) {
 	request("/billing/invoices/", function (response) {
 		console.log("Get Invoices Response:");
 		console.log(response);
+		callback(response);
 	});
 }
 
 //Get Orders
-function getOrders() {
+function getOrders(callback) {
 	request("/sales/orders", function (response) {
 		console.log("Get Orders Response:");
 		console.log(response);
+		callback(response);
 	});
 }
 
 //Get Purchase Orders
-function getPurchaseOrders() {
+function getPurchaseOrders(callback) {
 	request("/purchases/orders?", function (response) {
 		console.log("Get Purchase Orders Response:");
 		console.log(response);
+		callback(response);
 	});
 }
 
 //Get Financial Account
-function getFinancialAccounts() {
+function getFinancialAccounts(callback) {
 	request("/financialcore/financialAccounts", function (response) {
 		console.log("Get Financial Account Response:");
 		console.log(response);
+		callback(response);
 	});
 }
 
 //Get Accounting Summary 
-function getAccountingSummary() {
+function getAccountingSummary(callback) {
 	request("/financialCore/accountingEntries/getAccountingSummaries/odata?$inlinecount=allpages&$top=20&$skip10", function (response) {
 		console.log("Get Accounting SummaryResponse:");
 		console.log(response);
+		callback(response);
 	});
 }
 
 //Get Costumers
-function getCostumers() {
+function getCostumers(callback) {
 	request("/salescore/customerParties?page=1&pageSize=10", function (response) {
 		console.log("Get Costumers");
 		console.log(response);
+		callback(response);
 	});
 }
-
-$(document).ready(function(){
-	console.log("ready");
-});

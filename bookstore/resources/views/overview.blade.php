@@ -3,6 +3,8 @@
 <html lang="en" class="">
 
 <head>
+  
+
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
@@ -34,16 +36,28 @@
 
   <meta id="wixMobileViewport" name="viewport" content="width=980, user-scalable=yes">
 
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+  <!-- Our Scripts -->
+  <script type="text/javascript" src="../js/requests.js"></script>
 
+  <script>
+      $(function(){
+        console.log("Document Ready");
 
-
-
-
-
-
-
-
+        //Number of items
+        getMaterialItems(function(response) {
+          total = 0;
+          for(var i in response)
+          {
+            total += response[i]["maxStock"];
+          }
+          $('#numberItems').text(total);
+        });
+        
+      });
+  </script>
 
   <!-- META DATA -->
   <script type="text/javascript">
@@ -8815,7 +8829,7 @@ Imaging with any questions regarding Web fonts:  http://webfonts.fonts.com
                                     <h1 class="font_0"><span class="color_13">Value of items:</span></h1>
                                   </div>
                                   <div data-packed="true" style="width: 51px; pointer-events: none;" class="txtNew" id="comp-k2rzlq48">
-                                    <h2 class="font_2"><span class="color_14">5.1k</span></h2>
+                                    <h2 class="font_2" id="numberItems"><span class="color_14">5.1k</span></h2>
                                   </div>
                                   <div data-packed="true" style="width: 92px; pointer-events: none;" class="txtNew" id="comp-k2rzm9rd">
                                     <h2 class="font_2"><span class="color_14">9.674 €</span></h2>
