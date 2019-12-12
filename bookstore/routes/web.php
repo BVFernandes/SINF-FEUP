@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('', 'overview')->name('overview');
+Route::view('overview', 'overview')->name('overview');
+Route::view('inventory', 'inventory')->name('inventory');
+Route::view('logistics', 'logistics')->name('logistics');
+Route::view('finances', 'finances')->name('finances');
+Route::view('sales', 'sales')->name('sales');

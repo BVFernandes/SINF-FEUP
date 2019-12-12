@@ -11902,19 +11902,19 @@ Imaging with any questions regarding Web fonts:  http://webfonts.fonts.com
             </style>
             <nav aria-label="Site" style="height:;top:;bottom:;left:;right:;width:141px;z-index:50" class="style-j8lb5r6x2" data-state="subMenuOpenSide-right items-align-left subItems-align-left notMobile" id="comp-j8lc2o2w" data-param-border="0" data-param-separator="0" data-param-padding="0" data-open-direction="subMenuOpenDir-down">
               <ul class="style-j8lb5r6x2menuContainer">
-                <li class="style-j8lb5r6x2_selected style-j8lb5r6x2_item style-j8lb5r6x2_itemWrapper " style="min-height:35px;height:35px" id="root0_"><a class=" style-j8lb5r6x2_label level0" style="line-height:35px" aria-haspopup="false" href="./overview.blade.php" target="_self">Overview</a>
+                <li class="style-j8lb5r6x2_selected style-j8lb5r6x2_item style-j8lb5r6x2_itemWrapper " style="min-height:35px;height:35px" id="root0_"><a class=" style-j8lb5r6x2_label level0" style="line-height:35px" aria-haspopup="false" href="./overview" target="_self">Overview</a>
                   <ul style="margin-bottom:" class="style-j8lb5r6x2_subMenu  style-j8lb5r6x2_emptySubMenu"></ul>
                 </li>
-                <li class="style-j8lb5r6x2_item style-j8lb5r6x2_itemWrapper " style="min-height:35px;height:35px" id="root1_"><a class=" style-j8lb5r6x2_label level0" style="line-height:35px" aria-haspopup="false" href="./sales.blade.php" target="_self">Sales</a>
+                <li class="style-j8lb5r6x2_item style-j8lb5r6x2_itemWrapper " style="min-height:35px;height:35px" id="root1_"><a class=" style-j8lb5r6x2_label level0" style="line-height:35px" aria-haspopup="false" href="./sales" target="_self">Sales</a>
                   <ul style="margin-bottom:" class="style-j8lb5r6x2_subMenu  style-j8lb5r6x2_emptySubMenu"></ul>
                 </li>
-                <li class="style-j8lb5r6x2_item style-j8lb5r6x2_itemWrapper " style="min-height:35px;height:35px" id="root2_"><a class=" style-j8lb5r6x2_label level0" style="line-height:35px" aria-haspopup="false" href="./finances.blade.php" target="_self">Finances</a>
+                <li class="style-j8lb5r6x2_item style-j8lb5r6x2_itemWrapper " style="min-height:35px;height:35px" id="root2_"><a class=" style-j8lb5r6x2_label level0" style="line-height:35px" aria-haspopup="false" href="./finances" target="_self">Finances</a>
                   <ul style="margin-bottom:" class="style-j8lb5r6x2_subMenu  style-j8lb5r6x2_emptySubMenu"></ul>
                 </li>
-                <li class="style-j8lb5r6x2_item style-j8lb5r6x2_itemWrapper " style="min-height:35px;height:35px" id="root3_"><a class=" style-j8lb5r6x2_label level0" style="line-height:35px" aria-haspopup="false" href="./inventory.blade.php" target="_self">Inventory</a>
+                <li class="style-j8lb5r6x2_item style-j8lb5r6x2_itemWrapper " style="min-height:35px;height:35px" id="root3_"><a class=" style-j8lb5r6x2_label level0" style="line-height:35px" aria-haspopup="false" href="./inventory" target="_self">Inventory</a>
                   <ul style="margin-bottom:" class="style-j8lb5r6x2_subMenu  style-j8lb5r6x2_emptySubMenu"></ul>
                 </li>
-                <li class="style-j8lb5r6x2_item style-j8lb5r6x2_itemWrapper " style="min-height:35px;height:35px" id="root4_"><a class=" style-j8lb5r6x2_label level0" style="line-height:35px" aria-haspopup="false" href="./logistics.blade.php" target="_self">Logistics</a>
+                <li class="style-j8lb5r6x2_item style-j8lb5r6x2_itemWrapper " style="min-height:35px;height:35px" id="root4_"><a class=" style-j8lb5r6x2_label level0" style="line-height:35px" aria-haspopup="false" href="./logistics" target="_self">Logistics</a>
                   <ul style="margin-bottom:" class="style-j8lb5r6x2_subMenu  style-j8lb5r6x2_emptySubMenu"></ul>
                 </li>
               </ul>
