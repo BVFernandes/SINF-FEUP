@@ -51,11 +51,27 @@
           total = 0;
           for(var i in response)
           {
-            total += response[i]["maxStock"];
+            for(var j in response[i]["materialsItemWarehouses"])
+            {
+              total += response[i]["materialsItemWarehouses"][j].stockBalance;
+            }
           }
           $('#numberItems').text(total);
         });
-        
+
+        //Value of items
+        getMaterialItems(function(response) {
+          total = 0;
+          for(var i in response)
+          {
+            for(var j in response[i]["materialsItemWarehouses"])
+            {
+              total += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
+            }
+          }
+          $('#valueItems').text(total + "€");
+        });
+
       });
   </script>
 
@@ -8829,10 +8845,10 @@ Imaging with any questions regarding Web fonts:  http://webfonts.fonts.com
                                     <h1 class="font_0"><span class="color_13">Value of items:</span></h1>
                                   </div>
                                   <div data-packed="true" style="width: 51px; pointer-events: none;" class="txtNew" id="comp-k2rzlq48">
-                                    <h2 class="font_2" id="numberItems"><span class="color_14">5.1k</span></h2>
+                                    <h2 class="font_2" id="numberItems"><span class="color_14"></span></h2>
                                   </div>
                                   <div data-packed="true" style="width: 92px; pointer-events: none;" class="txtNew" id="comp-k2rzm9rd">
-                                    <h2 class="font_2"><span class="color_14">9.674 €</span></h2>
+                                    <h2 class="font_2" id="valueItems"><span class="color_14"></span></h2>
                                   </div>
                                 </div>
                               </div>
