@@ -35,13 +35,28 @@
   <meta id="wixMobileViewport" name="viewport" content="width=980, user-scalable=yes">
 
 
+<!-- JQuery -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+<!-- Our Scripts -->
+<script type="text/javascript" src={{ asset('js/requests.js')}}></script>
 
+<script>
+    $(function(){
+      console.log("Document Ready");
 
-
-
-
-
+      //Number of items
+      getAccountingSummary(function(response) {
+        total = 0;
+        for(var i in response)
+        {
+          total += response[i]["maxStock"];
+        }
+        $('#numberItems').text(total);
+      });
+      
+    });
+</script>
 
 
 
@@ -71,6 +86,8 @@
       "htmlEditorUrl": "http://editor.wix.com/html",
       "siteMembersUrl": "https://users.wix.com/wix-sm",
       "scriptsLocationMap": {
+Accounts receivable
+
         "automation": "https://static.parastorage.com/services/automation/1.23.0",
         "bootstrap": "https://static.parastorage.com/services/bootstrap/2.1229.80",
         "ck-editor": "https://static.parastorage.com/services/ck-editor/1.87.3",
@@ -1298,181 +1315,6 @@
     var googleTagManager = "";
     var facebookRemarketing = "";
     var yandexMetrika = "";
-  </script>
-
-
-  <script>
-    var wixBiSession = {
-      initialTimestamp: Date.now(),
-      ssrRequestTimestamp: 1575638705708,
-      requestId: publicModel.requestId,
-      viewerSessionId: 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random() * 16 | 0,
-          v = c == 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-      }),
-      sessionId: '9bca5fac-0c85-437f-8def-c5396179c419',
-      initialRequestTimestamp: performance.timeOrigin ? performance.timeOrigin : Date.now() - performance.now(),
-      visitorId: publicModel.sessionInfo.visitorId
-
-        ,
-      is_rollout: 0,
-      is_platform_loaded: 1,
-      suppressbi: false,
-      dc: '84',
-      renderType: 'bolt',
-      siteRevision: '45',
-      siteCacheRevision: '1575300892486',
-      wixBoltExclusionReason: '',
-      wixBoltExclusionReasonMoreInfo: '',
-      checkVisibility: (function() {
-        var alwaysVisible = document.hidden !== true;
-
-        function checkVisibility() {
-          alwaysVisible = alwaysVisible && document.hidden !== true;
-          return alwaysVisible;
-        }
-        document.addEventListener('visibilitychange', checkVisibility, false);
-        return checkVisibility;
-      })(),
-      sendBeacon: function(url) {
-        if (!wixBiSession.suppressbi) {
-
-          var sent = false;
-          try {
-            sent = navigator.sendBeacon(url);
-          } catch (e) {}
-          if (!sent) {
-            (new Image()).src = url;
-          }
-
-        }
-      },
-      sendBeat: (function() {
-        var beatUrl = 'https://frog.wix.com/bt?src=29&evid=3' +
-          '&v=1.4336.0' +
-          '&msid=2505d95c-9bec-4e60-a7ed-ddf387e74b8d' +
-          '&isp=0' +
-          '&st=2' +
-          '&dc=84' +
-          '&iss=1' +
-          '&url=' + encodeURIComponent(location.href.replace(/^http(s)?:\/\/(www\.)?/, ''));
-        var referrer = document.referrer;
-        if (referrer) {
-          beatUrl += '&ref=' + encodeURIComponent(referrer);
-        }
-        var match = document.cookie.match(/_wixCIDX=([^;]*)/)
-        if (match) {
-          beatUrl += '&client_id=' + match[1];
-        }
-        var prevMark = 'fetchStart';
-        return function(et, name, extra, pageNumber) {
-          var tts = Math.round(performance.now());
-          var ts = et === 1 ? 0 : Date.now() - wixBiSession.initialTimestamp;
-          if (name && performance.mark) {
-            var mark = name + ' (beat ' + et + ')';
-            performance.mark(mark);
-            if (performance.measure) {
-              performance.measure('\u2B50' + mark, prevMark, mark);
-            }
-            prevMark = mark;
-          }
-          extra = extra || '';
-          if (extra.indexOf('pn=') === -1) {
-            extra += '&pn=' + (pageNumber || '1');
-          }
-          if (extra.indexOf('sr=') === -1 && screen.width) {
-            extra += '&sr=' + screen.width + 'x' + screen.height;
-          }
-          if (screen.availWidth) {
-            extra += '&sar=' + screen.availWidth + 'x' + screen.availHeight;
-          }
-          if (extra.indexOf('wr=') === -1 && window.innerWidth) {
-            extra += '&wr=' + window.innerWidth + 'x' + window.innerHeight;
-          }
-          if (window.outerWidth) {
-            extra += '&wor=' + window.outerWidth + 'x' + window.outerHeight;
-          }
-          if (extra.indexOf('ita=') === -1) {
-            extra += '&ita=' + (wixBiSession.checkVisibility() ? '1' : '0');
-          }
-          if (wixBiSession.siteRevision || wixBiSession.siteCacheRevision) {
-            extra += '&siterev=' + wixBiSession.siteRevision + "-" + wixBiSession.siteCacheRevision;
-          }
-          if (wixBiSession.hasOwnProperty('isUsingMesh')) {
-            extra += '&ism=' + (wixBiSession.isUsingMesh ? '1' : '0');
-          }
-          wixBiSession.sendBeacon(beatUrl +
-            '&et=' + et +
-            (name ? '&event_name=' + encodeURIComponent(name) : '') +
-            '&ts=' + ts +
-            '&tts=' + tts +
-            '&vsi=' + wixBiSession.viewerSessionId +
-            '&rid=' + wixBiSession.requestId +
-            '&viewer_name=' + encodeURIComponent(wixBiSession.renderType) +
-            '&is_rollout=' + wixBiSession.is_rollout +
-            '&is_platform_loaded=' + wixBiSession.is_platform_loaded +
-            (wixBiSession.sessionId ? '&sessionId=' + wixBiSession.sessionId : '') +
-            (wixBiSession.visitorId ? '&vid=' + wixBiSession.visitorId : '') +
-            (wixBiSession.siteMemberId ? '&mid=' + wixBiSession.siteMemberId : '') +
-            '&is_cached=' + wixBiSession.isCached +
-            '&caching=' + wixBiSession.caching +
-            extra
-          );
-        };
-      })()
-    };
-
-    (function() {
-      var microPop, caching = 'none';
-      var match = document.cookie.match(/ssr-caching="cache,\s*desc=(\w+)(?:,\s*varnish=(\w+))?(?:,\s*dc,\s*desc=(\w+))?(?:"|;|$)/);
-      if (!match && window.PerformanceServerTiming) {
-        match = [];
-        var serverTiming = performance.getEntriesByType('navigation')[0].serverTiming;
-        serverTiming.forEach(function(st) {
-          switch (st.name) {
-            case 'cache':
-              match[1] = st.description;
-              break;
-            case 'varnish':
-              match[2] = st.description;
-              break;
-            case 'dc':
-              microPop = st.description;
-          }
-        });
-      }
-      if (match && match.length) {
-        caching = match[1] + ',' + (match[2] || 'none');
-        if (!microPop) {
-          microPop = match[3];
-        }
-      }
-      wixBiSession.caching = caching;
-      wixBiSession.isCached = caching.indexOf("hit") === 0;
-      if (microPop) {
-        wixBiSession.microPop = microPop;
-      }
-    })();
-
-    wixBiSession.sendBeat(1, 'Init');
-  </script>
-
-  <script type="text/javascript">
-    (function(x, e, o, s, n) {
-      var a = window.fedops || {};
-      a.apps = a.apps || {};
-      a.apps[x] = {
-        startLoadTime: e && e.now && e.now()
-      };
-      try {
-        a.sessionId = o.getItem("fedops.logger.sessionId")
-      } catch (x) {}
-      a.sessionId = a.sessionId || wixBiSession.viewerSessionId;
-      window.fedops = a;
-      var d = "//frog.wix.com/bolt-performance?appName=" + x + "&src=72&evid=21" + '&dc=84' + "&is_rollout=" + wixBiSession.is_rollout + "&is_cached=" + wixBiSession.isCached + "&session_id=" + a.sessionId + "&_=" + s();
-      wixBiSession.sendBeacon(d)
-    })('bolt-viewer', window.performance, window.localStorage, Math.random, window.navigator);
   </script>
 
 
