@@ -34,31 +34,55 @@
 
   <meta id="wixMobileViewport" name="viewport" content="width=980, user-scalable=yes">
 
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<!-- JQuery -->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Our Scripts -->
+  <script type="text/javascript" src="../js/requests.js"></script>
 
-<!-- Our Scripts -->
-<script type="text/javascript" src={{ asset('js/requests.js')}}></script>
+  <script>
+      $(function(){
+        console.log("Document Ready");
+        var revenuetotal = 0;
+        var taxtotal = 0;
+        //order values
+        getInvoices(function(response) {
+          for(var i in response){
+            revenuetotal += response[i].grossValue.amount;
+            taxtotal += response[i].taxTotal.amount;
+          }
+          var total = revenuetotal - taxtotal;
+          $('#totalRevnue').text(total);
+        });
 
-<script>
-    $(function(){
-      console.log("Document Ready");
-
-      //Number of items
-      getAccountingSummary(function(response) {
-        total = 0;
-        for(var i in response)
-        {
-          total += response[i]["maxStock"];
-        }
-        $('#numberItems').text(total);
       });
-      
-    });
-</script>
 
+      $(function(){
+        console.log("Document Ready");
+        var revenuetotal = 0;
+        //order values
+        getInvoices(function(response) {
+          for(var i in response){
+            revenuetotal += response[i].grossValue.amount;
+          }
+          $('#Revnue').text(revenuetotal);
+        });
 
+      });
+
+      $(function(){
+        console.log("Document Ready");
+        var taxtotal = 0;
+        //order values
+        getInvoices(function(response) {
+          for(var i in response){
+            taxtotal += response[i].taxTotal.amount;
+          }
+          $('#taxt').text(taxtotal);
+        });
+
+      });
+  </script>
 
   <!-- META DATA -->
   <script type="text/javascript">
@@ -86,7 +110,6 @@
       "htmlEditorUrl": "http://editor.wix.com/html",
       "siteMembersUrl": "https://users.wix.com/wix-sm",
       "scriptsLocationMap": {
-Accounts receivable
 
         "automation": "https://static.parastorage.com/services/automation/1.23.0",
         "bootstrap": "https://static.parastorage.com/services/bootstrap/2.1229.80",
@@ -11774,7 +11797,7 @@ Imaging with any questions regarding Web fonts:  http://webfonts.fonts.com
                                     <h2 class="font_2" style="text-align:center; font-size:29px;"><span style="font-size:29px;"><span style="color:#000000;"><span style="font-weight:bold;"><span style="font-family:avenir-lt-w01_35-light1475496,sans-serif;">Accounts receivable</span></span></span></span></h2>
                                   </div>
                                   <div data-packed="true" class="txtNew" id="comp-k2t4krwm" style="width: 154px; pointer-events: none;">
-                                    <h2 class="font_2" style="font-size:50px; text-align:center;"><span style="font-size:50px;"><span class="color_14">0.4k €</span></span></h2>
+                                  <h2 class="font_2" id="totalRevnue"><span class="color_14"></span></h2>
                                   </div>
                                 </div>
                               </div>
@@ -11905,7 +11928,7 @@ Imaging with any questions regarding Web fonts:  http://webfonts.fonts.com
                                     <h2 class="font_2" style="text-align:center;"><span style="color:#000000;"><span style="font-weight:bold;"><span style="font-family:avenir-lt-w01_35-light1475496,sans-serif;">Total income</span></span></span></h2>
                                   </div>
                                   <div data-packed="true" class="txtNew" id="comp-k2t490rx" style="width: 154px; pointer-events: none;">
-                                    <h2 class="font_2" style="font-size:50px; text-align:center;"><span style="font-size:50px;"><span class="color_14">11.6k €</span></span></h2>
+                                  <h2 class="font_2" id="totalRevnue"><span class="color_14"></span></h2>
                                   </div>
                                 </div>
                               </div>
@@ -12174,7 +12197,7 @@ Imaging with any questions regarding Web fonts:  http://webfonts.fonts.com
                                     <h2 class="font_2" style="text-align:center;"><span style="color:#000000;"><span style="font-weight:bold;"><span style="font-family:avenir-lt-w01_35-light1475496,sans-serif;">Total costs</span></span></span></h2>
                                   </div>
                                   <div data-packed="true" class="txtNew" id="comp-k2t4v0bq" style="width: 154px; pointer-events: none;">
-                                    <h2 class="font_2" style="font-size:50px; text-align:center;"><span style="font-size:50px;"><span class="color_14">5.7k €</span></span></h2>
+                                  <h2 class="font_2" id="taxt"><span class="color_14"></span></h2>
                                   </div>
                                 </div>
                               </div>
@@ -12443,7 +12466,7 @@ Imaging with any questions regarding Web fonts:  http://webfonts.fonts.com
                                     <h2 class="font_2" style="text-align:center;"><span style="color:#000000;"><span style="font-weight:bold;"><span style="font-family:avenir-lt-w01_35-light1475496,sans-serif;">Total revenue</span></span></span></h2>
                                   </div>
                                   <div data-packed="true" class="txtNew" id="comp-k2t4v8sf" style="width: 154px; pointer-events: none;">
-                                    <h2 class="font_2" style="font-size:50px; text-align:center;"><span style="font-size:50px;"><span class="color_14">5.2k €</span></span></h2>
+                                  <h2 class="font_2" id="Revnue"><span class="color_14"></span></h2>
                                   </div>
                                 </div>
                               </div>

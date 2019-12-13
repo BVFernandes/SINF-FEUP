@@ -34,16 +34,44 @@
 
   <meta id="wixMobileViewport" name="viewport" content="width=980, user-scalable=yes">
 
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+  <!-- Our Scripts -->
+  <script type="text/javascript" src="../js/requests.js"></script>
 
+  <script>
+      $(function(){
+        console.log("Document Ready");
 
+        //Number of items
+        getMaterialItems(function(response) {
+          total = 0;
+          for(var i in response)
+          {
+            for(var j in response[i]["materialsItemWarehouses"])
+            {
+              total += response[i]["materialsItemWarehouses"][j].stockBalance;
+            }
+          }
+          $('#numberItems').text(total);
+        });
 
+        //Value of items
+        getMaterialItems(function(response) {
+          total = 0;
+          for(var i in response)
+          {
+            for(var j in response[i]["materialsItemWarehouses"])
+            {
+              total += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
+            }
+          }
+          $('#valueItems').text(total + " €");
+        });
 
-
-
-
-
-
+      });
+  </script>
 
   <!-- META DATA -->
   <script type="text/javascript">
@@ -9121,7 +9149,7 @@ Imaging with any questions regarding Web fonts:  http://webfonts.fonts.com
                                     <h2 class="font_2" style="text-align:center;"><span style="color:#000000;"><span style="font-weight:bold;"><span style="font-family:avenir-lt-w01_35-light1475496,sans-serif;">Items in inventory</span></span></span></h2>
                                   </div>
                                   <div data-packed="true" class="txtNew" id="comp-k2t3i6rc" style="width: 154px; pointer-events: none;">
-                                    <h2 class="font_2" style="font-size:50px; text-align:center;">5.1 k</h2>
+                                    <h2 class="font_2" id="numberItems" ><span class="color_14"></span></h2>
                                   </div>
                                 </div>
                               </div>
@@ -9231,7 +9259,7 @@ Imaging with any questions regarding Web fonts:  http://webfonts.fonts.com
                                     <h2 class="font_2" style="text-align:center;"><span style="color:#000000;"><span style="font-weight:bold;"><span style="font-family:avenir-lt-w01_35-light1475496,sans-serif;">Value of items</span></span></span></h2>
                                   </div>
                                   <div data-packed="true" class="txtNew" id="comp-k2t3ikxf" style="width: 154px; pointer-events: none;">
-                                    <h2 class="font_2" style="font-size:50px; text-align:center;"><span style="font-size:50px;"><span class="color_14">9.674 €</span></span></h2>
+                                    <h2 class="font_2" id="valueItems" ><span class="color_14"></span></h2>
                                   </div>
                                 </div>
                               </div>

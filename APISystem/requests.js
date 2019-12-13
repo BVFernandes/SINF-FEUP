@@ -75,18 +75,20 @@ function getMaterialItems(callback) {
 }
 
 //Get Invoices
-function getInvoices() {
+function getInvoices(callback) {
 	request("/billing/invoices/", function (response) {
 		console.log("Get Invoices Response:");
 		console.log(response);
+		callback(response);
 	});
 }
 
 //Get Orders
-function getOrders() {
+function getOrders(callback) {
 	request("/sales/orders", function (response) {
 		console.log("Get Orders Response:");
 		console.log(response);
+		callback(response);
 	});
 }
 
@@ -99,10 +101,11 @@ function getPurchaseOrders() {
 }
 
 //Get Financial Account
-function getFinancialAccounts() {
+function getFinancialAccounts(callcack) {
 	request("/financialcore/financialAccounts", function (response) {
 		console.log("Get Financial Account Response:");
 		console.log(response);
+		callback(response);
 	});
 }
 

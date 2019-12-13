@@ -69,7 +69,7 @@
               total += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
             }
           }
-          $('#valueItems').text(total + "€");
+          $('#valueItems').text(total + " €");
         });
 
       });
@@ -8988,7 +8988,7 @@ Imaging with any questions regarding Web fonts:  http://webfonts.fonts.com
                                 }
 
                                 #comp-k2s0pqs3 {
-                                  position: relative;
+                                  position: relative;x
                                   margin: 0px 0px 0px 0;
                                   left: 0px;
                                   grid-area: 1 / 1 / 9 / 2;
