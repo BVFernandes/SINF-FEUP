@@ -21,10 +21,17 @@ if(isset($_POST["submit"])) {
     echo "Total credit: " . $file_content->SourceDocuments->SalesInvoices->TotalCredit . "</br>";
 
     foreach($file_content->SourceDocuments->SalesInvoices->Invoice as $invoice) {
-		$query = Queries::insertInvoice($saft_id, substr($invoice->CustomerID, 0, -2), 
-			$invoice->Line->ProductCode, $invoice->InvoiceNo, 
-			$invoice->Line->Quantity);
-		echo $query;
-		$connection->updateDB($query);
+		$customerId = substr($invoice->CustomerID, 0, -2);
+		$invoiceNo = $invoice->InvoiceNo;
+		
+		foreach($invoice->Line as $line) {
+			$productCode = $line->ProductCode;
+			$quantity = $line->Quantity;
+			
+			$query = Queries::insertInvoice($saft_id, $customerId, $productCode, $invoiceNo, $quantity);
+			echo $query;
+			$connection->updateDB($query);
+		}
     }
+	header("Location: index.php");
 }

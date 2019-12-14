@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2019 at 03:44 AM
+-- Generation Time: Dec 14, 2019 at 01:52 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -39,6 +39,8 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`id`, `name`) VALUES
 ('0002', 'Relogio reading'),
+('0003', 'Alameda reading'),
+('0004', 'Catarina reading'),
 ('INDIF', 'Cliente Indiferenciado');
 
 -- --------------------------------------------------------
@@ -62,7 +64,85 @@ CREATE TABLE `invoice` (
 
 INSERT INTO `invoice` (`id`, `saft`, `customer`, `product`, `number`, `quantity`) VALUES
 (6, 20, '0002', 'METALLICAPOSTERS', 'FA 2019/3', 10),
-(7, 20, 'INDIF', 'NBAPOSTERS', 'FA 2019/4', 7);
+(7, 20, 'INDIF', 'NBAPOSTERS', 'FA 2019/4', 7),
+(8, 21, '0002', 'GAMEINFORMER', '3', 3),
+(9, 21, '0002', 'METALLICAPOSTERS', '7', 7),
+(10, 21, '0003', 'METALLICAPOSTERS', '4', 4),
+(11, 21, '0003', 'NBAPOSTERS', '15', 15),
+(12, 21, '0003', 'PRIDEANDPREJUDICE', '3', 3),
+(13, 21, '0004', 'OSMAIAS', '5', 5),
+(14, 21, '0004', 'METALLICAPOSTERS', '1', 1),
+(15, 21, '0004', 'PCGAMER', '20', 20),
+(16, 21, '0003', 'THEHUNGERGAMES', '7', 7),
+(17, 22, '0002', 'TIMES', '5', 5),
+(18, 22, '0002', 'TOKILLAMOCKINGBIR', '8', 8),
+(19, 22, '0003', 'NATIONALGEOGRAPHIC', '3', 3),
+(20, 22, '0003', 'NATIONALGEOGRAPHIC', '9', 9),
+(21, 22, '0003', 'NATIONALGEOGRAPHIC', '9', 9),
+(22, 22, '0003', 'THEHUNGERGAMES', '4', 4),
+(23, 23, '0004', 'TIMES', '2', 2),
+(24, 24, '0002', 'NATIONALGEOGRAPHIC', '5', 5),
+(25, 24, '0002', 'TOKILLAMOCKINGBIR', '5', 5),
+(26, 24, '0003', 'WRCPOSTERS', '7', 7),
+(27, 24, '0003', 'PRIDEANDPREJUDICE', '7', 7),
+(28, 24, '0004', 'GAMEINFORMER', '2', 2),
+(29, 24, '0004', 'METALLICAPOSTERS', '5', 5),
+(30, 25, '0004', 'NATIONALGEOGRAPHIC', '12', 12),
+(31, 25, '0004', 'GAMEINFORMER', '9', 9),
+(32, 25, 'INDIF', 'NATIONALGEOGRAPHIC', '13', 13),
+(33, 25, 'INDIF', 'METALLICAPOSTERS', '1', 1),
+(34, 25, 'INDIF', 'OSMAIAS', '3', 3),
+(35, 25, 'INDIF', 'THEHUNGERGAMES', '7', 7),
+(36, 21, 'INDIF', 'NATIONALGEOGRAPHIC', '10', 10),
+(37, 21, 'INDIF', 'TIMES', '9', 9),
+(38, 21, 'INDIF', 'GAMEINFORMER', '2', 2),
+(39, 22, 'INDIF', 'THEHUNGERGAMES', '7', 7),
+(40, 22, 'INDIF', 'WRCPOSTERS', '3', 3),
+(41, 22, 'INDIF', 'TOKILLAMOCKINGBIR', '4', 4),
+(42, 23, 'INDIF', 'TIMES', '19', 19),
+(43, 23, 'INDIF', 'PCGAMER', '4', 4),
+(44, 23, 'INDIF', 'PRIDEANDPREJUDICE', '1', 1),
+(45, 23, 'INDIF', 'TOKILLAMOCKINGBIR', '1', 1),
+(46, 24, 'INDIF', 'NBAPOSTERS', '8', 8),
+(47, 24, 'INDIF', 'PCGAMER', '5', 5),
+(48, 24, 'INDIF', 'GAMEINFORMER', '2', 2),
+(49, 24, 'INDIF', 'NATIONALGEOGRAPHIC', '8', 8),
+(50, 25, 'INDIF', 'NATIONALGEOGRAPHIC', '4', 4),
+(51, 25, 'INDIF', 'OSMAIAS', '2', 2),
+(52, 25, 'INDIF', 'PCGAMER', '4', 4),
+(53, 25, 'INDIF', 'PRIDEANDPREJUDICE', '1', 1),
+(54, 25, 'INDIF', 'THEHUNGERGAMES', '6', 6),
+(55, 25, 'INDIF', 'TIMES', '6', 6),
+(56, 26, '0002', 'METALLICAPOSTERS', '1', 1),
+(57, 26, '0002', 'NATIONALGEOGRAPHIC', '7', 7),
+(58, 26, '0002', 'OSMAIAS', '3', 3),
+(59, 26, '0003', 'PRIDEANDPREJUDICE', '9', 9),
+(60, 26, '0003', 'WRCPOSTERS', '1', 1),
+(61, 26, '0003', 'OSMAIAS', '4', 4),
+(62, 26, '0003', 'GAMEINFORMER', '3', 3),
+(63, 26, '0004', 'GAMEINFORMER', '5', 5),
+(64, 26, '0004', 'NATIONALGEOGRAPHIC', '4', 4),
+(65, 26, '0004', 'OSMAIAS', '5', 5),
+(66, 26, '0004', 'THEHUNGERGAMES', '6', 6),
+(67, 26, 'INDIF', 'GAMEINFORMER', '9', 9),
+(68, 26, 'INDIF', 'NATIONALGEOGRAPHIC', '11', 11),
+(69, 26, 'INDIF', 'PRIDEANDPREJUDICE', '6', 6),
+(70, 26, 'INDIF', 'THEHUNGERGAMES', '5', 5),
+(71, 27, '0002', 'GAMEINFORMER', '3', 3),
+(72, 27, '0002', 'NATIONALGEOGRAPHIC', '6', 6),
+(73, 27, '0003', 'NATIONALGEOGRAPHIC', '6', 6),
+(74, 27, '0003', 'NBAPOSTERS', '4', 4),
+(75, 27, '0003', 'PCGAMER', '2', 2),
+(76, 27, '0004', 'GAMEINFORMER', '2', 2),
+(77, 27, '0004', 'OSMAIAS', '4', 4),
+(78, 27, '0004', 'THEHUNGERGAMES', '3', 3),
+(79, 27, '0004', 'WRCPOSTERS', '4', 4),
+(80, 27, 'INDIF', 'GAMEINFORMER', '13', 13),
+(81, 27, 'INDIF', 'NATIONALGEOGRAPHIC', '9', 9),
+(82, 27, 'INDIF', 'OSMAIAS', '4', 4),
+(83, 27, 'INDIF', 'PCGAMER', '6', 6),
+(84, 27, 'INDIF', 'TOKILLAMOCKINGBIR', '1', 1),
+(85, 27, 'INDIF', 'METALLICAPOSTERS', '8', 8);
 
 -- --------------------------------------------------------
 
@@ -110,7 +190,14 @@ CREATE TABLE `saft` (
 --
 
 INSERT INTO `saft` (`id`, `start_date`, `end_date`) VALUES
-(20, '2019-12-01', '2019-12-31');
+(20, '2019-12-01', '2019-12-31'),
+(21, '2019-05-01', '2019-05-31'),
+(22, '2019-06-01', '2019-05-30'),
+(23, '2019-07-01', '2019-07-31'),
+(24, '2019-08-01', '2019-08-31'),
+(25, '2019-09-01', '2019-09-30'),
+(26, '2019-10-01', '2019-10-31'),
+(27, '2019-11-01', '2019-11-30');
 
 --
 -- Indexes for dumped tables
@@ -151,13 +238,13 @@ ALTER TABLE `saft`
 -- AUTO_INCREMENT for table `invoice`
 --
 ALTER TABLE `invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `saft`
 --
 ALTER TABLE `saft`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables
