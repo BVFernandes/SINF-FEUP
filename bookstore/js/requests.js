@@ -59,6 +59,15 @@ function request(path, callback) {
 	});
 }
 
+//Get Expenses
+function getInvoicesExpenses(callback) {
+	request("/invoiceReceipt/invoices", function (response) {
+		console.log("Get Expenses Response:");
+		console.log(response);
+		callback(response);
+	});
+}
+
 //Get Warehouses
 function getWarehouses(callback) {
 	request("/materialscore/warehouses", function (response) {
