@@ -53,30 +53,29 @@
 		$('#ValueOfItems').text(total + " €");
 	  });
 
-	  getPurchaseOrders(function(response) {
-		total = 0;
-		for(var i in response)
-		{
-		  total += response[i].payableAmount["amount"];
-		  
-		}
-		$('#SupliersDebt').text(total + " €");
-	  });
-
 	  getMaterialItems(function(response) {
-		var temp;
-		var array;
-		for(var i in response)
-		{
-			
-		  for(var j in response[i]["materialsItemWarehouses"])
-		  {
-			array = response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
-		  }
-		}
-		response.sort(function(a, b){return b-a});
-		console.log(response);
-		$('#TopItens').response;
+      for(var i in response)
+      {       
+        var product = new Object();
+        //Get Name
+        product["name"] = response[i]["itemKey"];
+        for(var j in response[i]["materialsItemWarehouses"])
+        {
+          //Get Quantity
+          if(!("quantity" in product))
+            product["quantity"] = 0;
+          product["quantity"] += response[i]["materialsItemWarehouses"][j]["stockBalance"];
+
+          //Get Total Value
+          if(!("inventoryBalance" in product))
+            product["inventoryBalance"] = 0;
+          product["inventoryBalance"] += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
+        }
+
+        //Add to Table
+        $('#table').append('<tr><td>' + product["name"] + '</td><td>' + product["quantity"] + '</td><td>' + product["inventoryBalance"] + '€' + '</td></tr>');
+      }
+
 	  });
 
 	});
@@ -217,24 +216,17 @@
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary text-center">List of products</h6>
                 </div>
-                <div class="card-body">
-				  <h5>
-				    <div class="row">
-						<div class="font-weight-bold col-4 text-left">Name</div>
-						<div class="font-weight-bold col-2 text-center">Price</div>
-						<div class="font-weight-bold col-3 text-center">Quantity</div>
-						<div class="font-weight-bold col-3 text-right">Total</div>
-					</div>
-				  </h5>
-                  <h6 class="font-weight"">Book 1 <span class="float-right">20</span></h6>
-                  <h6 class="font-weight"">Book 2 <span class="float-right">40</span></h6>
-                  <h6 class="font-weight"">Book 3 <span class="float-right">60</span></h6>
-                  <h6 class="font-weight"">Book 4 <span class="float-right">80</span></h6>
-                  <h6 class="font-weight">Book 5 <span class="float-right">100</span></h6>
-                </div>
-              </div>
-          </div>
-
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Value</th>
+                    </tr>
+                  </thead>
+                  <tbody id="table">
+                  </tbody>
+                </table>
         </div>
         <!-- /.container-fluid -->
 
