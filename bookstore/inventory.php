@@ -25,6 +25,17 @@
 <script src="./js/requests.js"></script>
 <script>
 	$(function(){
+
+    //Get random color
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
 	  console.log("Document Ready");
 
 	  //Number of items
@@ -53,7 +64,9 @@
 		$('#ValueOfItems').text(total + " €");
 	  });
 
+    //Products Table and PieChart
 	  getMaterialItems(function(response) {
+      var products = [];
       for(var i in response)
       {       
         var product = new Object();
@@ -74,9 +87,135 @@
 
         //Add to Table
         $('#table').append('<tr><td>' + product["name"] + '</td><td>' + product["quantity"] + '</td><td>' + product["inventoryBalance"] + '€' + '</td></tr>');
+
+        products.push(product);
       }
 
-	  });
+      //Extract data for pie chart
+      var labels = [];
+      var data = [];
+      var colors = [];
+      for (let i = 0; i < products.length; i++) {
+        labels.push(products[i]["name"]);
+        data.push(products[i]["quantity"]);
+        colors.push(getRandomColor());
+      }
+
+      //Add to pie chart
+      var ctx = document.getElementById("myPieChart");
+      var myPieChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: labels,
+          datasets: [{
+            data: data,
+            backgroundColor: colors
+          }],
+        },
+        options: {
+          maintainAspectRatio: false,
+          tooltips: {
+            backgroundColor: "rgb(255,255,255)",
+            bodyFontColor: "#858796",
+            borderColor: '#dddfeb',
+            borderWidth: 1,
+            xPadding: 15,
+            yPadding: 15,
+            displayColors: false,
+            caretPadding: 10,
+          },
+          legend: {
+            display: false
+          },
+          cutoutPercentage: 80,
+        },
+      });
+
+    });
+    
+    //Warehouses Value
+    getMaterialItems(function(response) {
+      var warehouses = new Object();
+      for(var i in response)
+      {       
+        for(var j in response[i]["materialsItemWarehouses"])
+        {
+          if(!(response[i]["materialsItemWarehouses"][j]["warehouse"] in warehouses))
+            warehouses[response[i]["materialsItemWarehouses"][j]["warehouse"]] = 0;
+            
+            warehouses[response[i]["materialsItemWarehouses"][j]["warehouse"]] += response[i]["materialsItemWarehouses"][j]["inventoryBalance"]["amount"];
+        }
+      }
+
+      //Extract data for bar chart
+      var labels = [];
+      var value = [];
+      for(warehouse in warehouses)
+      {
+        labels.push(warehouse);
+        value.push(warehouses[warehouse]);
+      }
+
+      var ctx = document.getElementById("myBarChart");
+      var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: "Value",
+            backgroundColor: "#4e73df",
+            hoverBackgroundColor: "#2e59d9",
+            borderColor: "#4e73df",
+            data: value,
+          }],
+        },
+        options: {
+          maintainAspectRatio: false,
+          layout: {
+            padding: {
+              left: 10,
+              right: 25,
+              top: 25,
+              bottom: 0
+            }
+          },
+          scales: {
+            xAxes: [{
+              time: {
+                unit: 'warehouse'
+              },
+              gridLines: {
+                display: false,
+                drawBorder: false
+              },
+              ticks: {
+                maxTicksLimit: 6
+              },
+              maxBarThickness: 25,
+            }],
+            yAxes: [{
+              ticks: {
+                min: 0,
+                max: Math.max(...value),
+                maxTicksLimit: 5,
+                padding: 10,
+              },
+              gridLines: {
+                color: "rgb(234, 236, 244)",
+                zeroLineColor: "rgb(234, 236, 244)",
+                drawBorder: false,
+                borderDash: [2],
+                zeroLineBorderDash: [2]
+              }
+            }],
+          },
+          legend: {
+            display: false
+          }
+        }
+      });
+
+    });
 
 	});
  </script>
@@ -133,7 +272,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Values of items</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Value of inventory</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800" id="ValueOfItems"></div>
                     </div>
                     <div class="col-auto">
@@ -151,65 +290,63 @@
           <div class="row">
 
             <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Income and expenses</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                  </div>
-                </div>
+			<div class="col-xl-6 col-lg-5">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Warehouse Value</h6>
               </div>
+              <div class="card-body">
+                <div class="chart-bar">
+                <canvas id="myBarChart"></canvas>
+                </div>
+                <hr>
+                </div>
             </div>
+			</div>
 
             <!-- Pie Chart -->
-            <div class="col-xl-4 col-lg-5">
+            <div class="col-xl-6 col-lg-5">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Product Quantity Share</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-pie pt-4 pb-2">
                     <canvas id="myPieChart"></canvas>
                   </div>
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
-                    </span>
-                  </div>
                 </div>
               </div>
             </div>
+
           </div>
 
 		  <div>
 			<div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary text-center">List of products</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">List of products</h6>
                 </div>
-                <table class="table">
+				<div class="card-body">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th scope="col">Name</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Value</th>
+                      <th>Name</th>
+                      <th>Quantity</th>
+                      <th>Value</th>
                     </tr>
                   </thead>
+				  <tfoot>
+                    <tr>
+                      <th>Name</th>
+                      <th>Quantity</th>
+                      <th>Value</th>
+                    </tr>
+                  </tfoot>
                   <tbody id="table">
                   </tbody>
                 </table>
+				</div>
         </div>
         <!-- /.container-fluid -->
 
@@ -229,6 +366,8 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
+
+  
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -240,11 +379,10 @@
   <script src="js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
+   <script src="vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+  <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 
