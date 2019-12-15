@@ -116,7 +116,7 @@
           labels: labels,
           datasets: [{
             data: data,
-            backgroundColor: colors
+            backgroundColor: colors,
           }],
         },
         options: {
@@ -198,7 +198,7 @@
               ticks: {
                 maxTicksLimit: 6
               },
-              maxBarThickness: 25,
+              maxBarThickness: 200,
             }],
             yAxes: [{
               ticks: {
