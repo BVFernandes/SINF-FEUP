@@ -91,6 +91,13 @@
         products.push(product);
       }
 
+      //Sort quantity
+      products.sort(function(a, b){
+        if(a["quantity"] < b["quantity"])
+          return 1;
+        return -1
+      })
+
       //Extract data for pie chart
       var labels = [];
       var data = [];
