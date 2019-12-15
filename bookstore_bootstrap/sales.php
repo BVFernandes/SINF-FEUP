@@ -57,14 +57,15 @@
 		$('#ValueOfItems').text(total + " €");
 	  });
 
-	  getPurchaseOrders(function(response) {
+	  //Gross Sales
+	  getInvoices(function(response) {
 		total = 0;
 		for(var i in response)
 		{
-		  total += response[i].payableAmount["amount"];
+		  total += response[i].grossValue["amount"];
 		  
 		}
-		$('#SupliersDebt').text(total + " €");
+		$('#GrossSales').text(total + " €");
 	  });
 
 	  getMaterialItems(function(response) {
@@ -125,8 +126,8 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Debt to suppliers</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="SupliersDebt"></div>
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Gross Sales</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="GrossSales"></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
