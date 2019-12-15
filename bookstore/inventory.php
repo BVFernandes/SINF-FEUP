@@ -343,13 +343,6 @@
                       <th>Value</th>
                     </tr>
                   </thead>
-				  <tfoot>
-                    <tr>
-                      <th>Name</th>
-                      <th>Quantity</th>
-                      <th>Value</th>
-                    </tr>
-                  </tfoot>
                   <tbody id="table">
                   </tbody>
                 </table>
