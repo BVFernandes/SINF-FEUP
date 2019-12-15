@@ -68,20 +68,39 @@
 		$('#GrossSales').text(total + " €");
 	  });
 
-	  getMaterialItems(function(response) {
-		var temp;
-		var array;
+	  //Top Sales
+	  getInvoices(function(response) {
+		  //Get All Purchases
+		var array = new Object();
 		for(var i in response)
 		{
-
-		  for(var j in response[i]["materialsItemWarehouses"])
-		  {
-			array = response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
-		  }
+			for(var j in response[i]["documentLines"])
+			{
+				if(!(response[i]["documentLines"][j]["salesItem"] in array))
+					array[response[i]["documentLines"][j]["salesItem"]] = 0;
+				array[response[i]["documentLines"][j]["salesItem"]] += parseInt(response[i]["documentLines"][j]["quantity"]);
+			}
 		}
-		//response.sort(function(a, b){return b-a});
-		console.log(response);
-		$('#TopItens').response;
+		
+		//Sort by quantity
+		var items = Object.keys(array).map(function(key) {
+			return [key, array[key]];
+		});
+		items.sort(function(first, second) {
+			return second[1] - first[1];
+		});
+
+		//Top 5
+		var top = items.slice(0, 5);
+
+		//Display
+		var count = 0;
+		for (var key in top)
+		{
+			var partsString = String(top[key]).split(',');
+			$('#TopItem' + count).text(partsString[1] + " - " + partsString[0]);
+			count++;
+		}
 	  });
 
 	});
@@ -211,11 +230,11 @@
 			  <h6 class="m-0 font-weight-bold text-primary text-center">Top products</h6>
 			</div>
 			<div class="card-body">
-			  <h6 class="font-weight-bold" id="TopItens">Book 1 <span class="float-right">20</span></h6>
-			  <h6 class="font-weight-bold">Book 2 <span class="float-right">40</span></h6>
-			  <h6 class="font-weight-bold">Book 3 <span class="float-right">60</span></h6>
-			  <h6 class="font-weight-bold">Book 4 <span class="float-right">80</span></h6>
-			  <h6 class="font-weight-bold">Book 5 <span class="float-right">100</span></h6>
+			  <h6 class="font-weight-bold" id="TopItem0">Book 1 <span class="float-right" id="TopItemValue0">20</span></h6>
+			  <h6 class="font-weight-bold" id="TopItem1">Book 2 <span class="float-right" id="TopItemValue1">40</span></h6>
+			  <h6 class="font-weight-bold" id="TopItem2">Book 3 <span class="float-right" id="TopItemValue2">60</span></h6>
+			  <h6 class="font-weight-bold" id="TopItem3">Book 4 <span class="float-right" id="TopItemValue3">80</span></h6>
+			  <h6 class="font-weight-bold" id="TopItem4">Book 5 <span class="float-right" id="TopItemValue4">100</span></h6>
 			</div>
 		  </div>
 
