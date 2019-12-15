@@ -18,6 +18,70 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+  <!-- Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- Requests -->
+<script src="./js/requests.js"></script>
+<script>
+	$(function(){
+	  console.log("Document Ready");
+
+	  //Number of items
+	  getMaterialItems(function(response) {
+		total = 0;
+		for(var i in response)
+		{
+		  for(var j in response[i]["materialsItemWarehouses"])
+		  {
+			total += response[i]["materialsItemWarehouses"][j].stockBalance;
+		  }
+		}
+		$('#NumberOfItems').text(total);
+	  });
+
+	  //Value of items
+	  getMaterialItems(function(response) {
+		total = 0;
+		for(var i in response)
+		{
+		  for(var j in response[i]["materialsItemWarehouses"])
+		  {
+			total += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
+		  }
+		}
+		$('#ValueOfItems').text(total + " €");
+	  });
+
+	  getPurchaseOrders(function(response) {
+		total = 0;
+		for(var i in response)
+		{
+		  total += response[i].payableAmount["amount"];
+		  
+		}
+		$('#SupliersDebt').text(total + " €");
+	  });
+
+	  getMaterialItems(function(response) {
+		var temp;
+		var array;
+		for(var i in response)
+		{
+			
+		  for(var j in response[i]["materialsItemWarehouses"])
+		  {
+			array = response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
+		  }
+		}
+		response.sort(function(a, b){return b-a});
+		console.log(response);
+		$('#TopItens').response;
+	  });
+
+	});
+ </script>
+
 </head>
 
 <body id="page-top">
@@ -54,7 +118,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Items in inventory</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">40,000</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="NumberOfItems"></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-boxes fa-2x text-gray-300"></i>
@@ -71,7 +135,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Values of items</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">€215,000</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="ValueOfItems"></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-euro-sign fa-2x text-gray-300"></i>

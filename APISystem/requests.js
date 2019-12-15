@@ -93,10 +93,11 @@ function getOrders(callback) {
 }
 
 //Get Purchase Orders
-function getPurchaseOrders() {
+function getPurchaseOrders(callback) {
 	request("/purchases/orders?", function (response) {
 		console.log("Get Purchase Orders Response:");
 		console.log(response);
+		callback(response);
 	});
 }
 

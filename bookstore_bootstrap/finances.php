@@ -18,6 +18,68 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+   <!-- Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- Requests -->
+<script src="./js/requests.js"></script>
+<script>
+	$(function(){
+	  console.log("Document Ready");
+
+	  //Number of items
+	  getInvoices(function(response) {
+		total = 0;
+    for(var i in response)
+		{
+			total += response[i].grossValue["amount"];
+		}
+		$('#TotalIncome').text(total + " €");
+	  });
+
+	  //Value of items
+	  getInvoices(function(response) {
+		total;
+    tax = 0;
+    income = 0;
+    for(var i in response)
+		{
+			tax += response[i].taxTotal["amount"];
+      income += response[i].grossValue["amount"];
+		}
+    total = income-tax;
+		$('#TotalRevenue').text(total.toFixed(2) + " €");
+	  });
+
+	  getPurchaseOrders(function(response) {
+		total = 0;
+		for(var i in response)
+		{
+		  total += response[i].payableAmount["amount"];
+		  
+		}
+		$('#SupliersDebt').text(total + " €");
+	  });
+
+	  getMaterialItems(function(response) {
+		var temp;
+		var array;
+		for(var i in response)
+		{
+			
+		  for(var j in response[i]["materialsItemWarehouses"])
+		  {
+			array = response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
+		  }
+		}
+		response.sort(function(a, b){return b-a});
+		console.log(response);
+		$('#TopItens').response;
+	  });
+
+	});
+ </script>
+
 </head>
 
 <body id="page-top">
@@ -54,7 +116,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total income</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">€40,000</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="TotalIncome"></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
@@ -145,7 +207,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total revenue</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">€21,000</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="TotalRevenue"></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-euro-sign fa-2x text-gray-300"></i>

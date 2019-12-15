@@ -53,6 +53,16 @@
           $('#ValueOfItems').text(total + " €");
         });
 
+        getPurchaseOrders(function(response) {
+          total = 0;
+          for(var i in response)
+          {
+            total += response[i].payableAmount["amount"];
+            
+          }
+          $('#SupliersDebt').text(total + " €");
+        });
+
       });
   </script>
 
@@ -92,7 +102,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Number of items</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="NumberOfItems">40,000</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="NumberOfItems"></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-boxes fa-2x text-gray-300"></i>
@@ -109,7 +119,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Value of items</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="ValueOfItems">€215,000</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="ValueOfItems"></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
@@ -126,7 +136,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Debt to suppliers</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">€21,000</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="SupliersDebt"></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
