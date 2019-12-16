@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2019 at 06:03 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.1
+-- Generation Time: Dec 16, 2019 at 04:14 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,8 +19,42 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sinf2`
+-- Database: `sinf`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cost`
+--
+
+CREATE TABLE `cost` (
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `total_price` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cost`
+--
+
+INSERT INTO `cost` (`id`, `date`, `total_price`) VALUES
+(66, '2019-12-15', 15.38),
+(67, '2019-12-15', 18.39),
+(68, '2019-12-15', 44.83),
+(69, '2019-12-02', 93.48),
+(70, '2019-12-02', 75.66),
+(71, '2019-12-15', 6.15),
+(72, '2019-12-15', 16.58),
+(73, '2019-12-15', 47.93),
+(74, '2019-12-15', 15.38),
+(75, '2019-12-15', 18.39),
+(76, '2019-12-15', 44.83),
+(77, '2019-12-02', 93.48),
+(78, '2019-12-02', 75.66),
+(79, '2019-12-15', 6.15),
+(80, '2019-12-15', 16.58),
+(81, '2019-12-15', 47.93);
 
 -- --------------------------------------------------------
 
@@ -41,7 +75,8 @@ INSERT INTO `customer` (`id`, `name`) VALUES
 ('0002', 'Relogio reading'),
 ('0003', 'Alameda reading'),
 ('0004', 'Catarina reading'),
-('INDIF', 'Cliente Indiferenciado');
+('INDIF', 'Cliente Indiferenciado'),
+('JA', 'JA');
 
 -- --------------------------------------------------------
 
@@ -174,7 +209,88 @@ INSERT INTO `invoice` (`id`, `saft`, `customer`, `product`, `number`, `quantity`
 (155, 50, '0002', 'OSMAIAS', 'FA 2019/7', 2),
 (156, 50, '0004', 'TIMES', 'FA 2019/8', 7),
 (157, 50, '0004', 'THEHUNGERGAMES', 'FA 2019/8', 5),
-(158, 50, '0004', 'WRCPOSTERS', 'FA 2019/8', 2);
+(158, 50, '0004', 'WRCPOSTERS', 'FA 2019/8', 2),
+(198, 55, '0004', 'PRIDEANDPREJUDICE', 'FA 2019/8', 2),
+(239, 61, '0002', 'METALLICAPOSTERS', 'FA 2019/5', 4),
+(240, 61, '0002', 'THEHUNGERGAMES', 'FA 2019/5', 5),
+(241, 61, '0003', 'NATIONALGEOGRAPHIC', 'FA 2019/6', 5),
+(242, 61, '0003', 'OSMAIAS', 'FA 2019/6', 7),
+(243, 61, '0003', 'THEHUNGERGAMES', 'FA 2019/6', 1),
+(244, 61, '0002', 'GAMEINFORMER', 'FA 2019/7', 3),
+(245, 61, '0002', 'OSMAIAS', 'FA 2019/7', 2),
+(246, 61, '0004', 'PRIDEANDPREJUDICE', 'FA 2019/8', 2),
+(247, 62, '0002', 'METALLICAPOSTERS', 'FA 2019/5', 4),
+(248, 62, '0002', 'THEHUNGERGAMES', 'FA 2019/5', 5),
+(249, 62, '0003', 'NATIONALGEOGRAPHIC', 'FA 2019/6', 5),
+(250, 62, '0003', 'OSMAIAS', 'FA 2019/6', 7),
+(251, 62, '0003', 'THEHUNGERGAMES', 'FA 2019/6', 1),
+(252, 62, '0002', 'GAMEINFORMER', 'FA 2019/7', 3),
+(253, 62, '0002', 'OSMAIAS', 'FA 2019/7', 2),
+(254, 62, '0004', 'PRIDEANDPREJUDICE', 'FA 2019/8', 2),
+(255, 63, '0002', 'METALLICAPOSTERS', 'FA 2019/5', 4),
+(256, 63, '0002', 'THEHUNGERGAMES', 'FA 2019/5', 5),
+(257, 63, '0003', 'NATIONALGEOGRAPHIC', 'FA 2019/6', 5),
+(258, 63, '0003', 'OSMAIAS', 'FA 2019/6', 7),
+(259, 63, '0003', 'THEHUNGERGAMES', 'FA 2019/6', 1),
+(260, 63, '0002', 'GAMEINFORMER', 'FA 2019/7', 3),
+(261, 63, '0002', 'OSMAIAS', 'FA 2019/7', 2),
+(262, 63, '0004', 'PRIDEANDPREJUDICE', 'FA 2019/8', 2),
+(263, 64, '0002', 'METALLICAPOSTERS', 'FA 2019/5', 4),
+(264, 64, '0002', 'THEHUNGERGAMES', 'FA 2019/5', 5),
+(265, 64, '0003', 'NATIONALGEOGRAPHIC', 'FA 2019/6', 5),
+(266, 64, '0003', 'OSMAIAS', 'FA 2019/6', 7),
+(267, 64, '0003', 'THEHUNGERGAMES', 'FA 2019/6', 1),
+(268, 64, '0002', 'GAMEINFORMER', 'FA 2019/7', 3),
+(269, 64, '0002', 'OSMAIAS', 'FA 2019/7', 2),
+(270, 64, '0004', 'PRIDEANDPREJUDICE', 'FA 2019/8', 2),
+(271, 65, '0002', 'METALLICAPOSTERS', 'FA 2019/5', 4),
+(272, 65, '0002', 'THEHUNGERGAMES', 'FA 2019/5', 5),
+(273, 65, '0003', 'NATIONALGEOGRAPHIC', 'FA 2019/6', 5),
+(274, 65, '0003', 'OSMAIAS', 'FA 2019/6', 7),
+(275, 65, '0003', 'THEHUNGERGAMES', 'FA 2019/6', 1),
+(276, 65, '0002', 'GAMEINFORMER', 'FA 2019/7', 3),
+(277, 65, '0002', 'OSMAIAS', 'FA 2019/7', 2),
+(278, 65, '0004', 'PRIDEANDPREJUDICE', 'FA 2019/8', 2),
+(279, 66, '0002', 'METALLICAPOSTERS', 'FA 2019/5', 4),
+(280, 66, '0002', 'THEHUNGERGAMES', 'FA 2019/5', 5),
+(281, 66, '0003', 'NATIONALGEOGRAPHIC', 'FA 2019/6', 5),
+(282, 66, '0003', 'OSMAIAS', 'FA 2019/6', 7),
+(283, 66, '0003', 'THEHUNGERGAMES', 'FA 2019/6', 1),
+(284, 66, '0002', 'GAMEINFORMER', 'FA 2019/7', 3),
+(285, 66, '0002', 'OSMAIAS', 'FA 2019/7', 2),
+(286, 66, '0004', 'PRIDEANDPREJUDICE', 'FA 2019/8', 2),
+(287, 67, '0002', 'METALLICAPOSTERS', 'FA 2019/5', 4),
+(288, 67, '0002', 'THEHUNGERGAMES', 'FA 2019/5', 5),
+(289, 67, '0003', 'NATIONALGEOGRAPHIC', 'FA 2019/6', 5),
+(290, 67, '0003', 'OSMAIAS', 'FA 2019/6', 7),
+(291, 67, '0003', 'THEHUNGERGAMES', 'FA 2019/6', 1),
+(292, 67, '0002', 'GAMEINFORMER', 'FA 2019/7', 3),
+(293, 67, '0002', 'OSMAIAS', 'FA 2019/7', 2),
+(294, 67, '0004', 'PRIDEANDPREJUDICE', 'FA 2019/8', 2),
+(295, 68, '0002', 'METALLICAPOSTERS', 'FA 2019/5', 4),
+(296, 68, '0002', 'THEHUNGERGAMES', 'FA 2019/5', 5),
+(297, 68, '0003', 'NATIONALGEOGRAPHIC', 'FA 2019/6', 5),
+(298, 68, '0003', 'OSMAIAS', 'FA 2019/6', 7),
+(299, 68, '0003', 'THEHUNGERGAMES', 'FA 2019/6', 1),
+(300, 68, '0002', 'GAMEINFORMER', 'FA 2019/7', 3),
+(301, 68, '0002', 'OSMAIAS', 'FA 2019/7', 2),
+(302, 68, '0004', 'PRIDEANDPREJUDICE', 'FA 2019/8', 2),
+(303, 69, '0002', 'METALLICAPOSTERS', 'FA 2019/5', 4),
+(304, 69, '0002', 'THEHUNGERGAMES', 'FA 2019/5', 5),
+(305, 69, '0003', 'NATIONALGEOGRAPHIC', 'FA 2019/6', 5),
+(306, 69, '0003', 'OSMAIAS', 'FA 2019/6', 7),
+(307, 69, '0003', 'THEHUNGERGAMES', 'FA 2019/6', 1),
+(308, 69, '0002', 'GAMEINFORMER', 'FA 2019/7', 3),
+(309, 69, '0002', 'OSMAIAS', 'FA 2019/7', 2),
+(310, 69, '0004', 'PRIDEANDPREJUDICE', 'FA 2019/8', 2),
+(311, 70, '0002', 'METALLICAPOSTERS', 'FA 2019/5', 4),
+(312, 70, '0002', 'THEHUNGERGAMES', 'FA 2019/5', 5),
+(313, 70, '0003', 'NATIONALGEOGRAPHIC', 'FA 2019/6', 5),
+(314, 70, '0003', 'OSMAIAS', 'FA 2019/6', 7),
+(315, 70, '0003', 'THEHUNGERGAMES', 'FA 2019/6', 1),
+(316, 70, '0002', 'GAMEINFORMER', 'FA 2019/7', 3),
+(317, 70, '0002', 'OSMAIAS', 'FA 2019/7', 2),
+(318, 70, '0004', 'PRIDEANDPREJUDICE', 'FA 2019/8', 2);
 
 -- --------------------------------------------------------
 
@@ -235,11 +351,29 @@ INSERT INTO `saft` (`id`, `start_date`, `end_date`, `total_price`) VALUES
 (46, '2019-01-01', '2019-01-31', 137.99),
 (47, '2019-04-01', '2019-04-30', 232.27),
 (48, '2019-11-01', '2019-11-30', 181.38),
-(50, '2019-06-01', '2019-06-30', 315.27);
+(50, '2019-06-01', '2019-06-30', 315.27),
+(55, '2019-12-01', '2019-12-31', 214.11),
+(56, '2019-12-01', '2019-12-31', 214.11),
+(61, '2019-12-01', '2019-12-31', 214.11),
+(62, '2019-12-01', '2019-12-31', 214.11),
+(63, '2019-12-01', '2019-12-31', 214.11),
+(64, '2019-12-01', '2019-12-31', 214.11),
+(65, '2019-12-01', '2019-12-31', 214.11),
+(66, '2019-12-01', '2019-12-31', 214.11),
+(67, '2019-12-01', '2019-12-31', 214.11),
+(68, '2019-12-01', '2019-12-31', 214.11),
+(69, '2019-12-01', '2019-12-31', 214.11),
+(70, '2019-12-01', '2019-12-31', 214.11);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cost`
+--
+ALTER TABLE `cost`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `customer`
@@ -273,16 +407,22 @@ ALTER TABLE `saft`
 --
 
 --
+-- AUTO_INCREMENT for table `cost`
+--
+ALTER TABLE `cost`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+
+--
 -- AUTO_INCREMENT for table `invoice`
 --
 ALTER TABLE `invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=319;
 
 --
 -- AUTO_INCREMENT for table `saft`
 --
 ALTER TABLE `saft`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- Constraints for dumped tables
