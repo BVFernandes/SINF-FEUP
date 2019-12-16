@@ -91,16 +91,6 @@
         products.push(product);
       }
 
-<<<<<<< HEAD
-=======
-      //Sort quantity
-      products.sort(function(a, b){
-        if(a["quantity"] < b["quantity"])
-          return 1;
-        return -1
-      })
-
->>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
       //Extract data for pie chart
       var labels = [];
       var data = [];
@@ -201,11 +191,7 @@
               ticks: {
                 maxTicksLimit: 6
               },
-<<<<<<< HEAD
               maxBarThickness: 25,
-=======
-              maxBarThickness: 200,
->>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
             }],
             yAxes: [{
               ticks: {
@@ -304,10 +290,6 @@
           <div class="row">
 
             <!-- Area Chart -->
-<<<<<<< HEAD
-=======
-			<div class="col-xl-6 col-lg-5">
->>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Warehouse Value</h6>
@@ -319,10 +301,9 @@
                 <hr>
                 </div>
             </div>
-			</div>
 
             <!-- Pie Chart -->
-            <div class="col-xl-6 col-lg-5">
+            <div class="col-xl-4 col-lg-5">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -342,21 +323,19 @@
 		  <div>
 			<div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">List of products</h6>
+                  <h6 class="m-0 font-weight-bold text-primary text-center">List of products</h6>
                 </div>
-				<div class="card-body">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Quantity</th>
-                      <th>Value</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Value</th>
                     </tr>
                   </thead>
                   <tbody id="table">
                   </tbody>
                 </table>
-				</div>
         </div>
         <!-- /.container-fluid -->
 
@@ -376,8 +355,6 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-
-  
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -389,14 +366,8 @@
   <script src="js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-   <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/chart.js/Chart.min.js"></script>
 
-<<<<<<< HEAD
-=======
-  <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
-
->>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
 </body>
 
 </html>

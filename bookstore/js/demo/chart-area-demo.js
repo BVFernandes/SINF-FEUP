@@ -114,6 +114,7 @@ var myLineChart = new Chart(ctx, {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
           return datasetLabel + ': €' + number_format(tooltipItem.yLabel);
+<<<<<<< HEAD
         }
       }
     }
@@ -298,6 +299,8 @@ var myLineChart = new Chart(ctx, {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
           return datasetLabel + ': €' + number_format(tooltipItem.yLabel);
+=======
+>>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
         }
       }
     }

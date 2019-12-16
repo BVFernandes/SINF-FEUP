@@ -91,8 +91,6 @@
         products.push(product);
       }
 
-<<<<<<< HEAD
-=======
       //Sort quantity
       products.sort(function(a, b){
         if(a["quantity"] < b["quantity"])
@@ -100,7 +98,6 @@
         return -1
       })
 
->>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
       //Extract data for pie chart
       var labels = [];
       var data = [];
@@ -119,7 +116,7 @@
           labels: labels,
           datasets: [{
             data: data,
-            backgroundColor: colors
+            backgroundColor: colors,
           }],
         },
         options: {
@@ -201,11 +198,7 @@
               ticks: {
                 maxTicksLimit: 6
               },
-<<<<<<< HEAD
-              maxBarThickness: 25,
-=======
               maxBarThickness: 200,
->>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
             }],
             yAxes: [{
               ticks: {
@@ -304,10 +297,7 @@
           <div class="row">
 
             <!-- Area Chart -->
-<<<<<<< HEAD
-=======
 			<div class="col-xl-6 col-lg-5">
->>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Warehouse Value</h6>
@@ -391,12 +381,9 @@
   <!-- Page level plugins -->
    <script src="vendor/chart.js/Chart.min.js"></script>
 
-<<<<<<< HEAD
-=======
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
 
->>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
 </body>
 
 </html>
