@@ -69,6 +69,15 @@
 </head>
 
 <body id="page-top">
+<?php
+
+	include_once('DBConnection.php');
+	include_once('queries.php');
+	
+	$connection = new Database();
+	$connection->connectDB();
+?>
+
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -190,8 +199,11 @@
             <h1 class="h3 mb-0 text-gray-800">Finances</h1>
           </div>
 
-          <div class="row">
-			<div class="col-xl">
+          <!-- Content Row -->
+		  <div class="row">
+
+            <!-- Area Chart -->
+            <div class="col-xl">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -199,13 +211,20 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+				<div id="data_revenue" style="display: none;">
+					<?php
+						include_once('revenue_graph.php');
+					?>
+
+				</div>
+	
                   <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+                    <canvas id="myAreaChart_revenue"></canvas>
                   </div>
                 </div>
               </div>
             </div>
-		  </div>
+          </div>
 
 
 
@@ -242,8 +261,7 @@
   <script src="vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+  <script src="js/demo/chart-area-index.js"></script>
 
 </body>
 

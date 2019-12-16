@@ -47,13 +47,8 @@
       </li>
 	  <li class="nav-item active">
         <a class="nav-link" href="inventory.php">
-          <i class="fas fa-boxes"></i>
-          <span>Inventory</span></a>
-      </li>
-	  <li class="nav-item active">
-        <a class="nav-link" href="logistics.php">
           <i class="fas fa-pallet"></i>
-          <span>Logistics</span></a>
+          <span>Inventory</span></a>
       </li>
 	  <li class="nav-item active">
         <a class="nav-link" href="saft_file_upload.php">

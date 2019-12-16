@@ -131,13 +131,6 @@
 		  
           <!-- Content Row -->
 		  
-		  DATE PICKER IMPLEMENTATION
-		  </br>
-		  DATE PICKER IMPLEMENTATION
-		  </br>
-		  </br>
-		  </br>
-		  
           <div class="row">
 			<!-- Debts -->
             <div class="col-xl-3 col-md-6 mb-4">

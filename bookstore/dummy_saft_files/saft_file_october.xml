@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<AuditFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:OECD:StandardAuditFile-Tax:PT_1.04_01">
+  <Header>
+    <AuditFileVersion>1.04_01</AuditFileVersion>
+    <CompanyID>231716567</CompanyID>
+    <TaxRegistrationNumber>231716567</TaxRegistrationNumber>
+    <TaxAccountingBasis>F</TaxAccountingBasis>
+    <CompanyName>FEUP</CompanyName>
+    <CompanyAddress>
+      <BuildingNumber>0</BuildingNumber>
+      <StreetName>Rua das Flores 20</StreetName>
+      <AddressDetail>Rua das Flores 20   4400 Porto</AddressDetail>
+      <City>Porto</City>
+      <PostalCode>4400</PostalCode>
+      <Region>Desconhecido</Region>
+      <Country xsi:type="xsd:string">PT</Country>
+    </CompanyAddress>
+    <FiscalYear>2019</FiscalYear>
+    <StartDate>2019-10-01</StartDate>
+    <EndDate>2019-10-31</EndDate>
+    <CurrencyCode xsi:type="xsd:string">EUR</CurrencyCode>
+    <DateCreated>2019-10-15</DateCreated>
+    <TaxEntity>GLOBAL</TaxEntity>
+    <ProductCompanyTaxID>503140600</ProductCompanyTaxID>
+    <SoftwareCertificateNumber>2616</SoftwareCertificateNumber>
+    <ProductID>PRIMAVERA JASMIN/PRIMAVERA Business Software Solutions</ProductID>
+    <ProductVersion>1.00</ProductVersion>
+  </Header>
+  <SourceDocuments>
+    <SalesInvoices>
+      <NumberOfEntries>4</NumberOfEntries>
+      <TotalDebit>0</TotalDebit>
+      <TotalCredit>396.380000</TotalCredit>
+      <Invoice>
+        <InvoiceNo>FA 2019/5</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2019-10-14T12:35:18</InvoiceStatusDate>
+          <SourceID>up201901628@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>A14AWDm8wI8ZuvHVKYpoiGyKM8CKDfugOPQPui/AXNiTGTgSvsjcMRAO3QddgLO/3btnX0QYJZPEoIULykhRhEHwE3N/BIiN0cLGh9qm9qSS1iNqv6gUo7C+Rrtxe2lCfvN9wQ+HxT1nAT3cLRDrwDTfV3o2Evv0BRuVa55sCD8=</Hash>
+        <HashControl>1</HashControl>
+        <Period>12</Period>
+        <InvoiceDate>2019-10-14</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201901628@fe.up.pt</SourceID>
+        <SystemEntryDate>2019-10-14T12:35:17</SystemEntryDate>
+        <CustomerID>0004.5</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Rua do Relogio</StreetName>
+            <AddressDetail>Your Address Rua do Relogio 383  4200-072 Paranhos</AddressDetail>
+            <City>Paranhos</City>
+            <PostalCode>4200-072</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>Rua das Flores 20</StreetName>
+            <AddressDetail>Our Address Rua das Flores 20   4400 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4400</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2019-10-14T12:36:35</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <ProductCode>PRIDEANDPREJUDICE</ProductCode>
+          <ProductDescription>Metallica Rock Band</ProductDescription>
+          <Quantity>3.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>9.990000</UnitPrice>
+          <TaxPointDate>2019-10-14</TaxPointDate>
+          <Description>Metallica Rock Band</Description>
+          <CreditAmount>29.970000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>2</LineNumber>
+          <ProductCode>PCGAMER</ProductCode>
+          <ProductDescription>The Hunger Games</ProductDescription>
+          <Quantity>11.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>2.990000</UnitPrice>
+          <TaxPointDate>2019-10-14</TaxPointDate>
+          <Description>The Hunger Games</Description>
+          <CreditAmount>32.890000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>16.54</TaxPayable>
+          <NetTotal>71.91</NetTotal>
+          <GrossTotal>88.45</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2019/6</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2019-10-14T12:36:20</InvoiceStatusDate>
+          <SourceID>up201901628@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>Dh0e6bcZotyjE8ns6rAldaTXiOvLw2k5FqiMaWfff8/+K8OYnh4a44LwKblg8yDb4X8J+bFATgZdiCRhPHdKrnuhHQ+wJa7F6Zht1mygOLWAHWuExa7GKiObvdEEsX4HCjO9BCzw68LegJPsGmJKeHuQ3x5Usm7hfbiZMFRoLOU=</Hash>
+        <HashControl>1</HashControl>
+        <Period>12</Period>
+        <InvoiceDate>2019-10-14</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201901628@fe.up.pt</SourceID>
+        <SystemEntryDate>2019-10-14T12:36:14</SystemEntryDate>
+        <CustomerID>INDIF.1</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Alameda Street</StreetName>
+            <AddressDetail>Your Address Alameda Street 30  42000 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>42000</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>Rua das Flores 20</StreetName>
+            <AddressDetail>Our Address Rua das Flores 20   4400 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4400</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2019-10-14T12:37:41</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <ProductCode>NATIONALGEOGRAPHIC</ProductCode>
+          <ProductDescription>National Geographic (formerly the National Geographic Magazine and branded also as NAT GEO) is the o</ProductDescription>
+          <Quantity>7.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>3.990000</UnitPrice>
+          <TaxPointDate>2019-10-14</TaxPointDate>
+          <Description>National Geographic (formerly the National Geographic Magazine and branded also as NAT GEO) is the o</Description>
+          <CreditAmount>27.930000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>2</LineNumber>
+          <ProductCode>PRIDEANDPREJUDICE</ProductCode>
+          <ProductDescription>Os Maias</ProductDescription>
+          <Quantity>9.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>14.990000</UnitPrice>
+          <TaxPointDate>2019-10-14</TaxPointDate>
+          <Description>Os Maias</Description>
+          <CreditAmount>134.910000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>3</LineNumber>
+          <ProductCode>THEHUNGERGAMES</ProductCode>
+          <ProductDescription>The Hunger Games</ProductDescription>
+          <Quantity>6.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>11.990000</UnitPrice>
+          <TaxPointDate>2019-10-14</TaxPointDate>
+          <Description>The Hunger Games</Description>
+          <CreditAmount>72.940000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>21.77</TaxPayable>
+          <NetTotal>94.67</NetTotal>
+          <GrossTotal>116.44</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2019/7</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2019-10-15T14:04:05</InvoiceStatusDate>
+          <SourceID>up201901628@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>W7wHASypkuPZm0+tKWcCrnN8bCRgupvF/8o4K9LpC8Oj6x1RmnLh6uygE8ZuUocTfT4T/cKLqdmsEJE6rzPE1xJE6BmP8xFF7Vgk/Z+HhPfcWbZreik1nDCL7V0CWawepBBX9CloCJGDcqkfeb3rTkWSJckAQPzp8xUjxYXLlck=</Hash>
+        <HashControl>1</HashControl>
+        <Period>12</Period>
+        <InvoiceDate>2019-10-15</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201901628@fe.up.pt</SourceID>
+        <SystemEntryDate>2019-10-15T14:03:59</SystemEntryDate>
+        <CustomerID>0002.2</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Rua do Relogio</StreetName>
+            <AddressDetail>Your Address Rua do Relogio 383  4200-072 Paranhos</AddressDetail>
+            <City>Paranhos</City>
+            <PostalCode>4200-072</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>Rua das Flores 20</StreetName>
+            <AddressDetail>Our Address Rua das Flores 20   4400 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4400</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2019-10-15T14:05:27</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <ProductCode>GAMEINFORMER</ProductCode>
+          <ProductDescription>Is an American monthly video game magazine featuring articles.</ProductDescription>
+          <Quantity>6.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>2.990000</UnitPrice>
+          <TaxPointDate>2019-10-15</TaxPointDate>
+          <Description>Is an American monthly video game magazine featuring articles.</Description>
+          <CreditAmount>17.940000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>2</LineNumber>
+          <ProductCode>OSMAIAS</ProductCode>
+          <ProductDescription>Os Maias</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>9.290000</UnitPrice>
+          <TaxPointDate>2019-10-15</TaxPointDate>
+          <Description>Os Maias</Description>
+          <CreditAmount>9.290000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>6.34</TaxPayable>
+          <NetTotal>27.55</NetTotal>
+          <GrossTotal>33.89</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2019/8</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2019-10-15T14:04:40</InvoiceStatusDate>
+          <SourceID>up201901628@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>RMgj4sVgvxdF1L6S7r4zMEHmBK3+QRN2SwK09UPQsdS9imMjKDmuk0XE/ElY2ClMNkdLQ7GnlipnS3FbhQfwmvveNygVTSVP7LPnjCp1OljoUl1DvDqHuyncS19x9ehbruISK8UPvVDIS9mjxuWjCS2ReY59NftrGVa4sG9G7ic=</Hash>
+        <HashControl>1</HashControl>
+        <Period>12</Period>
+        <InvoiceDate>2019-10-15</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201901628@fe.up.pt</SourceID>
+        <SystemEntryDate>2019-10-15T14:04:35</SystemEntryDate>
+        <CustomerID>0004.1</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Rua Santa Catarina</StreetName>
+            <AddressDetail>Your Address Rua Santa Catarina 77</AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>Rua das Flores 20</StreetName>
+            <AddressDetail>Our Address Rua das Flores 20   4400 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4400</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2019-10-15T14:06:16</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <ProductCode>TIMES</ProductCode>
+          <ProductDescription>Since its immediate success in 1813</ProductDescription>
+          <Quantity>10.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>4.990000</UnitPrice>
+          <TaxPointDate>2019-10-15</TaxPointDate>
+          <Description>Since its immediate success in 1813</Description>
+          <CreditAmount>49.900000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+		<Line>
+          <LineNumber>1</LineNumber>
+          <ProductCode>THEHUNGERGAMES</ProductCode>
+          <ProductDescription>Since its immediate success in 1813</ProductDescription>
+          <Quantity>3.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>11.190000</UnitPrice>
+          <TaxPointDate>2019-10-15</TaxPointDate>
+          <Description>Since its immediate success in 1813</Description>
+          <CreditAmount>33.570000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+		<Line>
+          <LineNumber>1</LineNumber>
+          <ProductCode>NBAPOSTERS</ProductCode>
+          <ProductDescription>Since its immediate success in 1813</ProductDescription>
+          <Quantity>2.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>2.490000</UnitPrice>
+          <TaxPointDate>2019-10-15</TaxPointDate>
+          <Description>Since its immediate success in 1813</Description>
+          <CreditAmount>4.980000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>4.60</TaxPayable>
+          <NetTotal>19.98</NetTotal>
+          <GrossTotal>24.58</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+    </SalesInvoices>
+  </SourceDocuments>
+</AuditFile>

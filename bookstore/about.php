@@ -41,7 +41,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h1 mb-0 text-gray-800">About the bookstore</h1>
+            <h1 class="h1 mb-1 mt-3 text-gray-800">About the bookstore</h1>
           </div>
 
           <!-- Content Row -->
