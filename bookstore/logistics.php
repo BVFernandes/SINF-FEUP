@@ -87,17 +87,9 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h1 mb-1 mt-3 text-gray-800">Logistics</h1>
           </div>
-		  
-          <!-- Content Row -->
-		  
-		  DATE PICKER IMPLEMENTATION
-		  </br>
-		  DATE PICKER IMPLEMENTATION
-		  </br>
-		  </br>
-		  </br>
 
           <!-- Content Row -->
+          
           <div class="row">
 				<!-- Pie Chart -->
 			<div class="col-lg-9">
