@@ -119,7 +119,11 @@
           labels: labels,
           datasets: [{
             data: data,
+<<<<<<< HEAD
             backgroundColor: colors
+=======
+            backgroundColor: colors,
+>>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
           }],
         },
         options: {
