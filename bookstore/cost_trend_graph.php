@@ -6,7 +6,7 @@
 	$connection = new Database();
 	$connection->connectDB();
 	
-	$sql = Queries::getSaftFiles();
+	$sql = Queries::getCosts();
 	$result = $connection->selectDB($sql);
 	
 	$array = array();
@@ -19,10 +19,9 @@
 	if ($result->num_rows > 0) {
 	// output data of each row
 	while($row = $result->fetch_assoc()) {
-		$datetime = new DateTime($row["end_date"]);
+		$datetime = new DateTime($row["date"]);
 		$condition = $datetime->format('m');
 		foreach($array as $k => $v){
-			
 			if($k == $condition){
 				$array[$k] += $row['total_price'];
 			}

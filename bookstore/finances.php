@@ -25,6 +25,7 @@
   <script>
       $(function(){
         console.log("Document Ready");
+		var allRevenues = false;
 
         //Number of items
         getMaterialItems(function(response) {
@@ -39,16 +40,16 @@
           $('#NumberOfItems').text(total);
         });
 
+		var totalRevenue = 0;
         	//Total Revenue
 	      getInvoices(function(response) {
 	      var total;
         tax = 0;
-        income = 0;
+        total = 0;
         payment = 0;
         for(var i in response)
 		    {
 	    		tax += response[i].taxTotal["amount"];
-          income += response[i].grossValue["amount"];
 	    	}
         getInvoicesExpenses(function(response2) {
 		    for(var k in response2)
@@ -56,8 +57,12 @@
 		    	payment += response2[k].payableAmount["amount"];
           $('#Expenses').text(total);
 	    	}
-        total = income-tax-payment;
-        $('#TotalRevenue').text(total.toFixed(2) + " €");
+		totalRevenue -= tax;
+		totalRevenue -= payment;
+		if(allRevenues == true)
+			$('#TotalRevenue').text(totalRevenue.toFixed(2) + " €");
+						else
+			allRevenues = true;
 	      });
 	     });
         //Value of items
@@ -82,7 +87,21 @@
           }
           $('#SupliersDebt').text(total + " €");
         });
-
+		
+		jQuery.ajax({
+			type: "POST",
+			url: '../getTotalSales.php',
+			dataType: 'json',
+			data: {},
+			success: function (obj, textstatus) {
+						totalRevenue += Number(obj);
+						if(allRevenues == true)
+							$('#TotalRevenue').text(totalRevenue.toFixed(2) + " €");
+						else
+							allRevenues = true;
+					    console.log("SALES:" + obj);
+			}
+		});
       });
   </script>
 </head>
@@ -90,12 +109,12 @@
 <body id="page-top">
 <?php
 
-						include_once('DBConnection.php');
-						include_once('queries.php');
-						
-						$connection = new Database();
-						$connection->connectDB();
-						?>
+	include_once('DBConnection.php');
+	include_once('queries.php');
+	
+	$connection = new Database();
+	$connection->connectDB();
+?>
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -197,7 +216,21 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Total outcome</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="SupliersDebt"></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+						<?php
+							$sql = Queries::getCosts();
+							$result = $connection->selectDB($sql);
+							$total = 0;
+							if ($result->num_rows > 0) {
+						// output data of each row
+						while($row = $result->fetch_assoc()) {
+							$total += $row["total_price"];
+							}
+						} 
+						echo  "€" . $total;
+							
+						?>
+					  </div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
@@ -221,8 +254,16 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+				<div id="data_cost" style="display: none;">
+					<?php
+
+						include_once('cost_trend_graph.php');
+					?>
+
+				</div>
+	
                   <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+                    <canvas id="myAreaChart_cost"></canvas>
                   </div>
                 </div>
               </div>
@@ -242,7 +283,30 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total revenue</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="TotalRevenue"></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+						<?php
+							$total = 0;
+							$sql = Queries::getSaftFiles();
+							$result = $connection->selectDB($sql);
+							if ($result->num_rows > 0) {
+							// output data of each row
+							while($row = $result->fetch_assoc()) {
+								$total += $row["total_price"];
+								}
+							} 
+						
+							$sql = Queries::getCosts();
+							$result = $connection->selectDB($sql);
+							if ($result->num_rows > 0) {
+							// output data of each row
+							while($row = $result->fetch_assoc()) {
+								$total -= $row["total_price"];
+								}
+							} 
+							echo  "€" . $total;
+							
+						?>
+					  </div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
@@ -266,8 +330,15 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+				<div id="data_revenue" style="display: none;">
+					<?php
+						include_once('revenue_graph.php');
+					?>
+
+				</div>
+	
                   <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+                    <canvas id="myAreaChart_revenue"></canvas>
                   </div>
                 </div>
               </div>

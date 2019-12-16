@@ -55,6 +55,13 @@ class Queries {
 		return "SELECT * FROM `invoice` WHERE `id` = '{$id}'";
 	}
 	
+	public static function insertCost($date, $price) {
+		return "INSERT INTO `cost` VALUES (default, '{$date}', '{$price}')";
+	}
+	
+	public static function getCosts() {
+		return "SELECT * FROM `cost`";
+	}
 
 }
 
