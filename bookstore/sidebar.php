@@ -14,63 +14,59 @@
 </head>
 
 <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+    <div class="sidebar-brand-icon">
+      <i>
+        <img src='owl_logo_face.png' height="65" width="65" />
+      </i>
+    </div>
+    <div class="sidebar-brand-text mx-3">SINF bookstore</div>
+  </a>
 
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-        <div class="sidebar-brand-icon">
-		  <i>
-			<img src='owl_logo_face.png' height="65" width="65"/>
-		  </i>
-        </div>
-        <div class="sidebar-brand-text mx-3">SINF bookstore</div>
-      </a>
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
 
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active">
+    <a class="nav-link" href="index.php">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Overview</span></a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="sales.php">
+      <i class="fas fa-coins"></i>
+      <span>Sales</span></a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="finances.php">
+      <i class="fas fa-receipt"></i>
+      <span>Finances</span></a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="inventory.php">
+      <i class="fas fa-pallet"></i>
+      <span>Inventory</span></a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="saft_file_upload.php">
+      <i class="fas fa-file-upload"></i>
+      <span>Upload SAF-T files</span></a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="about.php">
+      <i class="fas fa-building"></i>
+      <span>About</span></a>
+  </li>
 
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="index.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Overview</span></a>
-      </li>
-	  <li class="nav-item active">
-        <a class="nav-link" href="sales.php">
-          <i class="fas fa-coins"></i>
-          <span>Sales</span></a>
-      </li>
-	  <li class="nav-item active">
-        <a class="nav-link" href="finances.php">
-          <i class="fas fa-receipt"></i>
-          <span>Finances</span></a>
-      </li>
-	  <li class="nav-item active">
-        <a class="nav-link" href="inventory.php">
-          <i class="fas fa-pallet"></i>
-          <span>Inventory</span></a>
-      </li>
-	  <li class="nav-item active">
-        <a class="nav-link" href="saft_file_upload.php">
-          <i class="fas fa-file-upload"></i>
-          <span>Upload SAF-T files</span></a>
-      </li>
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block">
 
-	  <li class="nav-item active">
-        <a class="nav-link" href="about.php">
-          <i class="fas fa-building"></i>
-          <span>About</span></a>
-      </li>
+  <!-- Sidebar Toggler (Sidebar) -->
+  <div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+  </div>
 
-
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-    </ul>
-    <!-- End of Sidebar -->
+</ul>
+<!-- End of Sidebar -->

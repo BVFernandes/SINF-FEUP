@@ -25,7 +25,7 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-	<?php include_once('sidebar.php')?>
+    <?php include_once('sidebar.php') ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -41,15 +41,15 @@
             <h1 class="h1 mb-1 mt-3 text-gray-800">SAF-T file upload</h1>
           </div>
 
-		<form action="upload.php" method="post" enctype="multipart/form-data">
+          <form action="upload.php" method="post" enctype="multipart/form-data">
 
-			<div class="d-sm-flex align-items-center justify-content-between mb-4">
-				<h5 class="h5 mb-1 mt-3 text-gray-800">Select SAF-T to upload</h5>
-			</div>
-			<input class="btn btn-secondary btn-block mb-2 " type="file" name="saft_file" id="saft_file">
-			</br>
-			<input class="btn btn-primary btn-block" type="submit" value="Upload file" name="submit">
-		</form>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h5 class="h5 mb-1 mt-3 text-gray-800">Select SAF-T to upload</h5>
+            </div>
+            <input class="btn btn-secondary btn-block mb-2 " type="file" name="saft_file" id="saft_file">
+            </br>
+            <input class="btn btn-primary btn-block" type="submit" value="Upload file" name="submit">
+          </form>
 
         </div>
         <!-- /.container-fluid -->
@@ -57,7 +57,7 @@
       </div>
       <!-- End of Main Content -->
 
-      <?php include_once('footer.php')?>
+      <?php include_once('footer.php') ?>
 
     </div>
     <!-- End of Content Wrapper -->

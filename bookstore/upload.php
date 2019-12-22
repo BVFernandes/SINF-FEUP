@@ -5,7 +5,6 @@
 $file = $_FILES['saft_file'];
 $xml_file_content = file_get_contents($_FILES['saft_file']['tmp_name']);
 $file_content = simplexml_load_string($xml_file_content);
-
 $start_date =  date($file_content->Header->StartDate);
 $end_date = date($file_content->Header->EndDate);
 
@@ -15,7 +14,6 @@ $end_date = date($file_content->Header->EndDate);
   <script>
       $(function(){
         console.log("Document Ready");
-
 		var uploadData = [];
         getPurchaseOrders(function(response) {
           var counter = 0;
@@ -38,8 +36,7 @@ $end_date = date($file_content->Header->EndDate);
 			dataType: 'text',
 			data: {data : uploadData, monthData : month},
 			success: function (obj, textstatus) {
-				window.location.href = "index.php";
-				
+				window.location.href = "index.php";	
 		   }
 	    });
 	  }
@@ -64,7 +61,6 @@ if(isset($_POST["submit"])) {
 		foreach($invoice->Line as $line) {
 			$productCode = $line->ProductCode;
 			$quantity = $line->Quantity;
-			
 			$query = Queries::insertInvoice($saft_id, $customerId, $productCode, $invoiceNo, $quantity);
 			$connection->updateDB($query);
 		}

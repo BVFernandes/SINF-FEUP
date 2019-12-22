@@ -19,224 +19,205 @@
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
   <!-- Jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-<!-- Requests -->
-<script src="./js/requests.js"></script>
-<script>
-	$(function(){
+  <!-- Requests -->
+  <script src="./js/requests.js"></script>
+  <script>
+    $(function() {
 
-    //Get random color
-    function getRandomColor() {
+      //Get random color
+      function getRandomColor() {
         var letters = '0123456789ABCDEF'.split('');
         var color = '#';
-        for (var i = 0; i < 6; i++ ) {
-            color += letters[Math.floor(Math.random() * 16)];
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
         }
         return color;
-    }
-
-	  console.log("Document Ready");
-
-	  //Number of items
-	  getMaterialItems(function(response) {
-		total = 0;
-		for(var i in response)
-		{
-		  for(var j in response[i]["materialsItemWarehouses"])
-		  {
-			total += response[i]["materialsItemWarehouses"][j].stockBalance;
-		  }
-		}
-		$('#NumberOfItems').text(total);
-	  });
-
-	  //Value of items
-	  getMaterialItems(function(response) {
-		total = 0;
-		for(var i in response)
-		{
-		  for(var j in response[i]["materialsItemWarehouses"])
-		  {
-			total += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
-		  }
-		}
-		$('#ValueOfItems').text(total + " €");
-	  });
-
-    //Products Table and PieChart
-	  getMaterialItems(function(response) {
-      var products = [];
-      for(var i in response)
-      {       
-        var product = new Object();
-        //Get Name
-        product["name"] = response[i]["itemKey"];
-        for(var j in response[i]["materialsItemWarehouses"])
-        {
-          //Get Quantity
-          if(!("quantity" in product))
-            product["quantity"] = 0;
-          product["quantity"] += response[i]["materialsItemWarehouses"][j]["stockBalance"];
-
-          //Get Total Value
-          if(!("inventoryBalance" in product))
-            product["inventoryBalance"] = 0;
-          product["inventoryBalance"] += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
-        }
-
-        //Add to Table
-        $('#table').append('<tr><td>' + product["name"] + '</td><td>' + product["quantity"] + '</td><td>' + product["inventoryBalance"] + '€' + '</td></tr>');
-
-        products.push(product);
       }
 
-<<<<<<< HEAD
-=======
-      //Sort quantity
-      products.sort(function(a, b){
-        if(a["quantity"] < b["quantity"])
-          return 1;
-        return -1
-      })
+      console.log("Document Ready");
 
->>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
-      //Extract data for pie chart
-      var labels = [];
-      var data = [];
-      var colors = [];
-      for (let i = 0; i < products.length; i++) {
-        labels.push(products[i]["name"]);
-        data.push(products[i]["quantity"]);
-        colors.push(getRandomColor());
-      }
-
-      //Add to pie chart
-      var ctx = document.getElementById("myPieChart");
-      var myPieChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          labels: labels,
-          datasets: [{
-            data: data,
-<<<<<<< HEAD
-            backgroundColor: colors
-=======
-            backgroundColor: colors,
->>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
-          }],
-        },
-        options: {
-          maintainAspectRatio: false,
-          tooltips: {
-            backgroundColor: "rgb(255,255,255)",
-            bodyFontColor: "#858796",
-            borderColor: '#dddfeb',
-            borderWidth: 1,
-            xPadding: 15,
-            yPadding: 15,
-            displayColors: false,
-            caretPadding: 10,
-          },
-          legend: {
-            display: false
-          },
-          cutoutPercentage: 80,
-        },
-      });
-
-    });
-    
-    //Warehouses Value
-    getMaterialItems(function(response) {
-      var warehouses = new Object();
-      for(var i in response)
-      {       
-        for(var j in response[i]["materialsItemWarehouses"])
-        {
-          if(!(response[i]["materialsItemWarehouses"][j]["warehouse"] in warehouses))
-            warehouses[response[i]["materialsItemWarehouses"][j]["warehouse"]] = 0;
-            
-            warehouses[response[i]["materialsItemWarehouses"][j]["warehouse"]] += response[i]["materialsItemWarehouses"][j]["inventoryBalance"]["amount"];
-        }
-      }
-
-      //Extract data for bar chart
-      var labels = [];
-      var value = [];
-      for(warehouse in warehouses)
-      {
-        labels.push(warehouse);
-        value.push(warehouses[warehouse]);
-      }
-
-      var ctx = document.getElementById("myBarChart");
-      var myBarChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: "Value",
-            backgroundColor: "#4e73df",
-            hoverBackgroundColor: "#2e59d9",
-            borderColor: "#4e73df",
-            data: value,
-          }],
-        },
-        options: {
-          maintainAspectRatio: false,
-          layout: {
-            padding: {
-              left: 10,
-              right: 25,
-              top: 25,
-              bottom: 0
-            }
-          },
-          scales: {
-            xAxes: [{
-              time: {
-                unit: 'warehouse'
-              },
-              gridLines: {
-                display: false,
-                drawBorder: false
-              },
-              ticks: {
-                maxTicksLimit: 6
-              },
-<<<<<<< HEAD
-              maxBarThickness: 25,
-=======
-              maxBarThickness: 200,
->>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
-            }],
-            yAxes: [{
-              ticks: {
-                min: 0,
-                max: Math.max(...value),
-                maxTicksLimit: 5,
-                padding: 10,
-              },
-              gridLines: {
-                color: "rgb(234, 236, 244)",
-                zeroLineColor: "rgb(234, 236, 244)",
-                drawBorder: false,
-                borderDash: [2],
-                zeroLineBorderDash: [2]
-              }
-            }],
-          },
-          legend: {
-            display: false
+      //Number of items
+      getMaterialItems(function(response) {
+        total = 0;
+        for (var i in response) {
+          for (var j in response[i]["materialsItemWarehouses"]) {
+            total += response[i]["materialsItemWarehouses"][j].stockBalance;
           }
         }
+        $('#NumberOfItems').text(total);
+      });
+
+      //Value of items
+      getMaterialItems(function(response) {
+        total = 0;
+        for (var i in response) {
+          for (var j in response[i]["materialsItemWarehouses"]) {
+            total += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
+          }
+        }
+        $('#ValueOfItems').text(total + " €");
+      });
+
+      //Products Table and PieChart
+      getMaterialItems(function(response) {
+        var products = [];
+        for (var i in response) {
+          var product = new Object();
+          //Get Name
+          product["name"] = response[i]["itemKey"];
+          for (var j in response[i]["materialsItemWarehouses"]) {
+            //Get Quantity
+            if (!("quantity" in product))
+              product["quantity"] = 0;
+            product["quantity"] += response[i]["materialsItemWarehouses"][j]["stockBalance"];
+
+            //Get Total Value
+            if (!("inventoryBalance" in product))
+              product["inventoryBalance"] = 0;
+            product["inventoryBalance"] += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
+          }
+
+          //Add to Table
+          $('#table').append('<tr><td>' + product["name"] + '</td><td>' + product["quantity"] + '</td><td>' + product["inventoryBalance"] + '€' + '</td></tr>');
+
+          products.push(product);
+        }
+
+
+          //Sort quantity
+          products.sort(function(a, b) {
+            if (a["quantity"] < b["quantity"])
+              return 1;
+            return -1
+          })
+
+        //Extract data for pie chart
+        var labels = [];
+        var data = [];
+        var colors = [];
+        for (let i = 0; i < products.length; i++) {
+          labels.push(products[i]["name"]);
+          data.push(products[i]["quantity"]);
+          colors.push(getRandomColor());
+        }
+
+        //Add to pie chart
+        var ctx = document.getElementById("myPieChart");
+        var myPieChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: labels,
+            datasets: [{
+              data: data,
+              backgroundColor: colors,
+            }],
+          },
+          options: {
+            maintainAspectRatio: false,
+            tooltips: {
+              backgroundColor: "rgb(255,255,255)",
+              bodyFontColor: "#858796",
+              borderColor: '#dddfeb',
+              borderWidth: 1,
+              xPadding: 15,
+              yPadding: 15,
+              displayColors: false,
+              caretPadding: 10,
+            },
+            legend: {
+              display: false
+            },
+            cutoutPercentage: 80,
+          },
+        });
+
+      });
+
+      //Warehouses Value
+      getMaterialItems(function(response) {
+        var warehouses = new Object();
+        for (var i in response) {
+          for (var j in response[i]["materialsItemWarehouses"]) {
+            if (!(response[i]["materialsItemWarehouses"][j]["warehouse"] in warehouses))
+              warehouses[response[i]["materialsItemWarehouses"][j]["warehouse"]] = 0;
+
+            warehouses[response[i]["materialsItemWarehouses"][j]["warehouse"]] += response[i]["materialsItemWarehouses"][j]["inventoryBalance"]["amount"];
+          }
+        }
+
+        //Extract data for bar chart
+        var labels = [];
+        var value = [];
+        for (warehouse in warehouses) {
+          labels.push(warehouse);
+          value.push(warehouses[warehouse]);
+        }
+
+        var ctx = document.getElementById("myBarChart");
+        var myBarChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: "Value",
+              backgroundColor: "#4e73df",
+              hoverBackgroundColor: "#2e59d9",
+              borderColor: "#4e73df",
+              data: value,
+            }],
+          },
+          options: {
+            maintainAspectRatio: false,
+            layout: {
+              padding: {
+                left: 10,
+                right: 25,
+                top: 25,
+                bottom: 0
+              }
+            },
+            scales: {
+              xAxes: [{
+                time: {
+                  unit: 'warehouse'
+                },
+                gridLines: {
+                  display: false,
+                  drawBorder: false
+                },
+                ticks: {
+                  maxTicksLimit: 6
+                },
+                maxBarThickness: 200,
+              }],
+              yAxes: [{
+                ticks: {
+                  min: 0,
+                  max: Math.max(...value),
+                  maxTicksLimit: 5,
+                  padding: 10,
+                },
+                gridLines: {
+                  color: "rgb(234, 236, 244)",
+                  zeroLineColor: "rgb(234, 236, 244)",
+                  drawBorder: false,
+                  borderDash: [2],
+                  zeroLineBorderDash: [2]
+                }
+              }],
+            },
+            legend: {
+              display: false
+            }
+          }
+        });
+
       });
 
     });
-
-	});
- </script>
+  </script>
 
 </head>
 
@@ -245,7 +226,7 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-	<?php include_once('sidebar.php')?>
+    <?php include_once('sidebar.php') ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -262,7 +243,7 @@
           </div>
 
 
-		  <div class="d-sm-flex align-items-center justify-content-between mb-4 ">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4 ">
             <h1 class="h3 mb-0 text-gray-800">Total inventory</h1>
           </div>
           <!-- Content Row -->
@@ -308,99 +289,95 @@
           <div class="row">
 
             <!-- Area Chart -->
-<<<<<<< HEAD
-=======
-			<div class="col-xl-6 col-lg-5">
->>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
-            <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Warehouse Value</h6>
-              </div>
-              <div class="card-body">
-                <div class="chart-bar">
-                <canvas id="myBarChart"></canvas>
-                </div>
-                <hr>
-                </div>
-            </div>
-			</div>
-
-            <!-- Pie Chart -->
-            <div class="col-xl-6 col-lg-5">
+            <<<<<<< HEAD=======<div class="col-xl-6 col-lg-5">
+              >>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
               <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Product Quantity Share</h6>
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Warehouse Value</h6>
                 </div>
-                <!-- Card Body -->
                 <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
+                  <div class="chart-bar">
+                    <canvas id="myBarChart"></canvas>
                   </div>
+                  <hr>
                 </div>
               </div>
-            </div>
-
           </div>
 
-		  <div>
-			<div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">List of products</h6>
+          <!-- Pie Chart -->
+          <div class="col-xl-6 col-lg-5">
+            <div class="card shadow mb-4">
+              <!-- Card Header - Dropdown -->
+              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Product Quantity Share</h6>
+              </div>
+              <!-- Card Body -->
+              <div class="card-body">
+                <div class="chart-pie pt-4 pb-2">
+                  <canvas id="myPieChart"></canvas>
                 </div>
-				<div class="card-body">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Quantity</th>
-                      <th>Value</th>
-                    </tr>
-                  </thead>
-                  <tbody id="table">
-                  </tbody>
-                </table>
-				</div>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <!-- /.container-fluid -->
+
+        <div>
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">List of products</h6>
+            </div>
+            <div class="card-body">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody id="table">
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <?php include_once('footer.php') ?>
 
       </div>
-      <!-- End of Main Content -->
-
-      <?php include_once('footer.php')?>
+      <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- End of Page Wrapper -->
 
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
 
 
-  
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Page level plugins -->
-   <script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
-<<<<<<< HEAD
-=======
-  <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
->>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
+    <<<<<<< HEAD=======<!-- Page level custom scripts -->
+      <script src="js/demo/datatables-demo.js"></script>
+
+      >>>>>>> c2da853ffa967728e87c79d922a5f70712b64f4a
 </body>
 
 </html>

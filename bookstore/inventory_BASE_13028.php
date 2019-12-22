@@ -19,67 +19,61 @@
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
   <!-- Jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-<!-- Requests -->
-<script src="./js/requests.js"></script>
-<script>
-	$(function(){
-	  console.log("Document Ready");
+  <!-- Requests -->
+  <script src="./js/requests.js"></script>
+  <script>
+    $(function() {
+      console.log("Document Ready");
 
-	  //Number of items
-	  getMaterialItems(function(response) {
-		total = 0;
-		for(var i in response)
-		{
-		  for(var j in response[i]["materialsItemWarehouses"])
-		  {
-			total += response[i]["materialsItemWarehouses"][j].stockBalance;
-		  }
-		}
-		$('#NumberOfItems').text(total);
-	  });
+      //Number of items
+      getMaterialItems(function(response) {
+        total = 0;
+        for (var i in response) {
+          for (var j in response[i]["materialsItemWarehouses"]) {
+            total += response[i]["materialsItemWarehouses"][j].stockBalance;
+          }
+        }
+        $('#NumberOfItems').text(total);
+      });
 
-	  //Value of items
-	  getMaterialItems(function(response) {
-		total = 0;
-		for(var i in response)
-		{
-		  for(var j in response[i]["materialsItemWarehouses"])
-		  {
-			total += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
-		  }
-		}
-		$('#ValueOfItems').text(total + " €");
-	  });
+      //Value of items
+      getMaterialItems(function(response) {
+        total = 0;
+        for (var i in response) {
+          for (var j in response[i]["materialsItemWarehouses"]) {
+            total += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
+          }
+        }
+        $('#ValueOfItems').text(total + " €");
+      });
 
-	  getMaterialItems(function(response) {
-      for(var i in response)
-      {       
-        var product = new Object();
-        //Get Name
-        product["name"] = response[i]["itemKey"];
-        for(var j in response[i]["materialsItemWarehouses"])
-        {
-          //Get Quantity
-          if(!("quantity" in product))
-            product["quantity"] = 0;
-          product["quantity"] += response[i]["materialsItemWarehouses"][j]["stockBalance"];
+      getMaterialItems(function(response) {
+        for (var i in response) {
+          var product = new Object();
+          //Get Name
+          product["name"] = response[i]["itemKey"];
+          for (var j in response[i]["materialsItemWarehouses"]) {
+            //Get Quantity
+            if (!("quantity" in product))
+              product["quantity"] = 0;
+            product["quantity"] += response[i]["materialsItemWarehouses"][j]["stockBalance"];
 
-          //Get Total Value
-          if(!("inventoryBalance" in product))
-            product["inventoryBalance"] = 0;
-          product["inventoryBalance"] += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
+            //Get Total Value
+            if (!("inventoryBalance" in product))
+              product["inventoryBalance"] = 0;
+            product["inventoryBalance"] += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
+          }
+
+          //Add to Table
+          $('#table').append('<tr><td>' + product["name"] + '</td><td>' + product["quantity"] + '</td><td>' + product["inventoryBalance"] + '€' + '</td></tr>');
         }
 
-        //Add to Table
-        $('#table').append('<tr><td>' + product["name"] + '</td><td>' + product["quantity"] + '</td><td>' + product["inventoryBalance"] + '€' + '</td></tr>');
-      }
+      });
 
-	  });
-
-	});
- </script>
+    });
+  </script>
 
 </head>
 
@@ -88,7 +82,7 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-	<?php include_once('sidebar.php')?>
+    <?php include_once('sidebar.php') ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -105,7 +99,7 @@
           </div>
 
 
-		  <div class="d-sm-flex align-items-center justify-content-between mb-4 ">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4 ">
             <h1 class="h3 mb-0 text-gray-800">Total inventory</h1>
           </div>
           <!-- Content Row -->
@@ -194,57 +188,57 @@
             </div>
           </div>
 
-		  <div>
-			<div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary text-center">List of products</h6>
-                </div>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Name</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Value</th>
-                    </tr>
-                  </thead>
-                  <tbody id="table">
-                  </tbody>
-                </table>
+          <div>
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary text-center">List of products</h6>
+              </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Value</th>
+                  </tr>
+                </thead>
+                <tbody id="table">
+                </tbody>
+              </table>
+            </div>
+            <!-- /.container-fluid -->
+
+          </div>
+          <!-- End of Main Content -->
+
+          <?php include_once('footer.php') ?>
+
         </div>
-        <!-- /.container-fluid -->
+        <!-- End of Content Wrapper -->
 
       </div>
-      <!-- End of Main Content -->
+      <!-- End of Page Wrapper -->
 
-      <?php include_once('footer.php')?>
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+      </a>
 
-    </div>
-    <!-- End of Content Wrapper -->
+      <!-- Bootstrap core JavaScript-->
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  </div>
-  <!-- End of Page Wrapper -->
+      <!-- Core plugin JavaScript-->
+      <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+      <!-- Custom scripts for all pages-->
+      <script src="js/sb-admin-2.min.js"></script>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- Page level plugins -->
+      <script src="vendor/chart.js/Chart.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+      <!-- Page level custom scripts -->
+      <script src="js/demo/chart-area-demo.js"></script>
+      <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 

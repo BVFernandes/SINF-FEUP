@@ -1,7 +1,8 @@
 <?php
 
-class Database {
-    
+class Database
+{
+
     const server = "localhost";
     const user = "root";
     const password = "";
@@ -10,31 +11,34 @@ class Database {
     private $connection = null;
     private $error = '';
 
-    function connectDB() {
+    function connectDB()
+    {
         $this->connection = new mysqli(self::server, self::user, self::password, self::database);
         if ($this->connection->connect_errno) {
             echo "Unsuccessful database connection: " . $this->connection->connect_errno . ", " .
-            $this->connection->connect_error;
+                $this->connection->connect_error;
             $this->error = $this->connection->connect_error;
         }
         $this->connection->set_charset("utf8");
         if ($this->connection->connect_errno) {
             echo "Unsuccessful character setting: " . $this->connection->connect_errno . ", " .
-            $this->connection->connect_error;
+                $this->connection->connect_error;
             $this->error = $this->connection->connect_error;
         }
         return $this->connection;
     }
 
-    function closeDB() {
+    function closeDB()
+    {
         $this->connection->close();
     }
 
-    function selectDB($query) {
+    function selectDB($query)
+    {
         $result = $this->connection->query($query);
         if ($this->connection->connect_errno) {
             echo "Error with query: {$query} - " . $this->connection->connect_errno . ", " .
-            $this->connection->connect_error;
+                $this->connection->connect_error;
             $this->error = $this->connection->connect_error;
         }
         if (!$result) {
@@ -43,14 +47,14 @@ class Database {
         return $result;
     }
 
-    function updateDB($query, $script = '') {
+    function updateDB($query, $script = '')
+    {
         $result = $this->connection->query($query);
         if ($this->connection->connect_errno) {
             echo "Error with query: {$query} - " . $this->connection->connect_errno . ", " .
-            $this->connection->connect_error;
+                $this->connection->connect_error;
             $this->error = $this->connection->connect_error;
-        }
-        else {
+        } else {
             if ($script != '') {
                 header("Location: $script");
             }
@@ -59,14 +63,14 @@ class Database {
         return $this->connection->insert_id;
     }
 
-    function poerrorDB() {
+    function poerrorDB()
+    {
         if ($this->error != '') {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
-
+    
 }
 ?>

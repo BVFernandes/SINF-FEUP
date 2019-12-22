@@ -24,65 +24,60 @@
   <!-- Requests -->
   <script src="./js/requests.js"></script>
   <script>
-      $(function(){
-        console.log("Document Ready");
+    $(function() {
+      console.log("Document Ready");
 
-        //Number of items
-        getMaterialItems(function(response) {
-          total = 0;
-          for(var i in response)
-          {
-            for(var j in response[i]["materialsItemWarehouses"])
-            {
-              total += response[i]["materialsItemWarehouses"][j].stockBalance;
-            }
+      //Number of items
+      getMaterialItems(function(response) {
+        total = 0;
+        for (var i in response) {
+          for (var j in response[i]["materialsItemWarehouses"]) {
+            total += response[i]["materialsItemWarehouses"][j].stockBalance;
           }
-          $('#NumberOfItems').text(total);
-        });
-
-        //Value of items
-        getMaterialItems(function(response) {
-          total = 0;
-          for(var i in response)
-          {
-            for(var j in response[i]["materialsItemWarehouses"])
-            {
-              total += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
-            }
-          }
-          $('#ValueOfItems').text(total + " €");
-        });
-
-        getPurchaseOrders(function(response) {
-          total = 0;
-          for(var i in response)
-          {
-            total += response[i].payableAmount["amount"];
-            
-          }
-          $('#SupliersDebt').text(total + " €");
-        });
-
+        }
+        $('#NumberOfItems').text(total);
       });
+
+      //Value of items
+      getMaterialItems(function(response) {
+        total = 0;
+        for (var i in response) {
+          for (var j in response[i]["materialsItemWarehouses"]) {
+            total += response[i]["materialsItemWarehouses"][j].inventoryBalance["amount"];
+          }
+        }
+        $('#ValueOfItems').text(total + " €");
+      });
+
+      getPurchaseOrders(function(response) {
+        total = 0;
+        for (var i in response) {
+          total += response[i].payableAmount["amount"];
+
+        }
+        $('#SupliersDebt').text(total + " €");
+      });
+
+    });
   </script>
 
 </head>
 
 <body id="page-top">
-<?php
+  <?php
 
-	include_once('DBConnection.php');
-	include_once('queries.php');
-	
-	$connection = new Database();
-	$connection->connectDB();
-?>
+  include_once('DBConnection.php');
+  include_once('queries.php');
+
+  $connection = new Database();
+  $connection->connectDB();
+  ?>
 
 
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-	<?php include_once('sidebar.php')?>
+    <?php include_once('sidebar.php') ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -99,7 +94,7 @@
           </div>
 
 
-		  <div class="d-sm-flex align-items-center justify-content-between mb-4 ">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4 ">
             <h1 class="h3 mb-0 text-gray-800">Inventory</h1>
           </div>
           <!-- Content Row -->
@@ -138,7 +133,7 @@
               </div>
             </div>
 
-			<!-- Debts -->
+            <!-- Debts -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
@@ -158,49 +153,49 @@
           </div>
 
           <!-- Content Row -->
-		  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Sales</h1>
           </div>
 
           <div class="row">
-		  <div class="col-xl-6 col-lg-7">
-		  <div class="card shadow mb-4">
-			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-			  <h6 class="m-0 font-weight-bold text-primary text-center">Top products</h6>
-			</div>
-			<div class="card-body">
-			  <?php
-				include_once('topProducts.php');
-				foreach($top5Products as $k => $v){
-					echo "<h6 class='font-weight-bold'>" . $k . "<span class='float-right'>" . $v . "</span></h6>";
-				}
-				?>
-			</div>
-			</div>
-			</div>
-			<div class="col-xl-6 col-lg-5">
-		  <div class="card shadow mb-4">
-			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-			 <h6 class="m-0 font-weight-bold text-primary">Top customers</h6>
-			</div>
-			<div class="card-body">
-				<?php
-				include_once('topCustomers.php');
-				foreach($topCustomers as $k => $v){
-					echo "<h6 class='font-weight-bold'>" . $k . "<span class='float-right'>" . $v . "</span></h6>";
-				}
-				?>
-			</div>
-		  </div>
-		  </div>
-		  </div>
- <!-- Content Row -->
-		  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <div class="col-xl-6 col-lg-7">
+              <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary text-center">Top products</h6>
+                </div>
+                <div class="card-body">
+                  <?php
+                  include_once('topProducts.php');
+                  foreach ($top5Products as $k => $v) {
+                    echo "<h6 class='font-weight-bold'>" . $k . "<span class='float-right'>" . $v . "</span></h6>";
+                  }
+                  ?>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-5">
+              <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Top customers</h6>
+                </div>
+                <div class="card-body">
+                  <?php
+                  include_once('topCustomers.php');
+                  foreach ($topCustomers as $k => $v) {
+                    echo "<h6 class='font-weight-bold'>" . $k . "<span class='float-right'>" . $v . "</span></h6>";
+                  }
+                  ?>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Content Row -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Finances</h1>
           </div>
 
           <!-- Content Row -->
-		  <div class="row">
+          <div class="row">
 
             <!-- Area Chart -->
             <div class="col-xl">
@@ -211,13 +206,13 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-				<div id="data_revenue" style="display: none;">
-					<?php
-						include_once('revenue_graph.php');
-					?>
+                  <div id="data_revenue" style="display: none;">
+                    <?php
+                    include_once('revenue_graph.php');
+                    ?>
 
-				</div>
-	
+                  </div>
+
                   <div class="chart-area">
                     <canvas id="myAreaChart_revenue"></canvas>
                   </div>
@@ -234,7 +229,7 @@
       </div>
       <!-- End of Main Content -->
 
-      <?php include_once('footer.php')?>
+      <?php include_once('footer.php') ?>
 
     </div>
     <!-- End of Content Wrapper -->
